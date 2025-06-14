@@ -11,12 +11,20 @@ class CategorySeeder extends Seeder
     /**
      * Run the database seeds.
      */
-    public function run(): void
+   public function run(): void
     {
         $categories = ['Pain Relief', 'Antibiotics', 'Vitamins', 'Allergy'];
 
+        Category::firstOrCreate(
+            ['name' => 'Uncategorized'],
+            ['img_url' => '/images/default_category.png']
+        );
+
         foreach ($categories as $name) {
-            Category::create(['name' => $name]);
+            Category::firstOrCreate(
+                ['name' => $name],
+                ['img_url' => '/images/default_category.png']
+            );
         }
     }
 }

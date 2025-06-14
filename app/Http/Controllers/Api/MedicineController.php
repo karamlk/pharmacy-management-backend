@@ -3,55 +3,100 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\MedicineResource;
 use App\Models\Category;
 use App\Models\Medicine;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Validator;
 
 class MedicineController extends Controller
 {
     public function index()
     {
-        $medicines = Medicine::with('category')->get();
 
-        return response()->json($medicines);
+        $medicines = Medicine::with('category')->get()->map(function ($medicine) {
+            $medicine->img_url = asset($medicine->img_url);
+            return $medicine;
+        });
+
+        return MedicineResource::collection($medicines);
+    }
+
+    public function getByCategory($categoryId)
+    {
+        $category = Category::find($categoryId);
+
+        if (! $category) {
+            return response()->json([
+                'error' => 'Category not found'
+            ], 404);
+        }
+
+
+        $medicines = $category->medicines()->get();
+
+        return MedicineResource::collection($medicines);
     }
 
     public function show($id)
     {
-        $medicine = Medicine::with('category')->find($id);
+        $medicine = Medicine::with('category')
+            ->find($id);
 
-        if (! $medicine) {
-            return response()->json(['message' => 'Medicine not found'], 404);
+        if (!$medicine) {
+            return response()->json(['error' => 'Medicine not found'], 404);
         }
 
-        return response()->json($medicine);
+        return new MedicineResource($medicine);
     }
 
     public function store(Request $request)
     {
+        $data = $request->all();
 
-        $validate = $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'category_name' => ['required', 'string', 'exists:categories,name'],
-            'manufacturer' => ['required', 'string', 'max:255'],
-            'price' => ['required', 'numeric', 'min:0'],
-            'stock' => ['required', 'integer', 'min:0'],
-            'expiry_date' => ['required', 'date']
-        ]);
+        $meds = isset($data[0]) ? $data : [$data];
 
-        $category = Category::where('name', $validate['category_name'])->first();
+        $savedMeds = [];
 
-        $medicine = Medicine::Create([
-            'name' => $validate['name'],
-            'category_id' => $category->id,
-            'manufacturer' => $validate['manufacturer'],
-            'price' => $validate['price'],
-            'stock' => $validate['stock'],
-            'expiry_date' => $validate['expiry_date']
-        ]);
+        foreach ($meds as $med) {
+            $validator = Validator::make($med, [
+                'name' => ['required', 'string', 'max:255'],
+                'category_name' => ['required', 'string', 'exists:categories,name'],
+                'manufacturer' => ['required', 'string', 'max:255'],
+                'active_ingredient' => ['required', 'string', 'max:255'],
+                'price' => ['required', 'numeric', 'min:0'],
+                'quantity' => ['required', 'integer', 'min:0'],
+                'production_date' => ['required', 'date', 'before:expiry_date'],
+                'expiry_date' => ['required', 'date', 'after:production_date'],
+                'img_url' => ['nullable', 'string'],
+            ]);
 
-        return response()->json($medicine, 201);
+            if ($validator->fails()) {
+                return response()->json([
+                    'error' => 'Validation failed for one or more items',
+                    'details' => $validator->errors(),
+                ], 422);
+            }
+
+            $category = Category::where('name', $med['category_name'])->first();
+
+            $savedMeds[] = Medicine::create([
+                'name' => $med['name'],
+                'category_id' => $category->id,
+                'manufacturer' => $med['manufacturer'],
+                'active_ingredient' => $med['active_ingredient'],
+                'price' => $med['price'],
+                'quantity' => $med['quantity'],
+                'production_date' => $med['production_date'],
+                'expiry_date' => $med['expiry_date'],
+                'img_url' => '/images/default_medicine.jpg',
+            ]);
+        }
+
+        return response()->json([
+            'message' => count($savedMeds) > 1 ? 'Medications created successfully' : 'Medication created successfully',
+            'data' => MedicineResource::collection($savedMeds)
+        ], 201);
     }
 
     public function update(Request $request, $id)
@@ -66,9 +111,11 @@ class MedicineController extends Controller
             'name' => ['sometimes', 'string', 'max:255'],
             'category_name' => ['sometimes', 'string', 'exists:categories,name'],
             'manufacturer' => ['sometimes', 'string', 'max:255'],
+            'active_ingredient' => ['sometimes', 'string', 'max:255'],
             'price' => ['sometimes', 'numeric', 'min:0'],
-            'stock' => ['sometimes', 'integer', 'min:0'],
-            'expiry_date' => ['sometimes', 'date'],
+            'quantity' => ['sometimes', 'integer', 'min:0'],
+            'production_date' => ['sometimes', 'date', 'before:expiry_date'],
+            'expiry_date' => ['sometimes', 'date', 'after:production_date'],
         ]);
 
         if (isset($validated['category_name'])) {
@@ -77,9 +124,19 @@ class MedicineController extends Controller
             unset($validated['category_name']);
         }
 
+        $newProductionDate = $validated['production_date'] ?? $medicine->production_date;
+        $newExpiryDate = $validated['expiry_date'] ?? $medicine->expiry_date;
+
+        if (strtotime($newProductionDate) >= strtotime($newExpiryDate)) {
+            return response()->json([
+                'message' => 'The production date must be before the expiry date.'
+            ], 422);
+        }
+
+
         $medicine->update($validated);
 
-        return response()->json($medicine);
+        return new MedicineResource($medicine);
     }
 
     public function destroy($id)
@@ -93,32 +150,5 @@ class MedicineController extends Controller
         $medicine->delete();
 
         return response()->json(['message' => 'Medicine deleted successfully']);
-    }
-
-    public function pharmacistView()
-    {
-        $inventory = Medicine::all();
-
-        return response()->json([
-            'data' => $inventory->map(function ($medicine) {
-                return [
-                    'id' => $medicine->id,
-                    'name' => $medicine->name,
-                    'quantity' => $medicine->stock,
-                    'expiry_date' => $medicine->expiry_date,
-                ];
-            })
-        ]);
-    }
-    public function pharmacistViewMedicine($id)
-    {
-        $medicine = Medicine::find($id);
-
-        return response()->json([
-            'id' => $medicine->id,
-            'name' => $medicine->name,
-            'quantity' => $medicine->stock,
-            'expiry_date' => $medicine->expiry_date,
-        ]);
     }
 }
