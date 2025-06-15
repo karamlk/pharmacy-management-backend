@@ -11,17 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('medicines', function (Blueprint $table) {
+        Schema::create('suppliers', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('category_id')->constrained('categories');
             $table->string('name');
-            $table->string('manufacturer');
-            $table->string('active_ingredient');
-            $table->decimal('price', 8, 2);
-            $table->integer('quantity');
-            $table->date('production_date');
-            $table->date('expiry_date');
-            $table->string('img_url')->nullable();
+            $table->string('email')->nullable();
+            $table->string('phone', 15)->nullable();
+            $table->decimal('balance', 12, 2)->default(0);
              $table->softDeletes();
             $table->timestamps();
         });
@@ -32,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('medicines');
+        Schema::dropIfExists('suppliers');
     }
 };
