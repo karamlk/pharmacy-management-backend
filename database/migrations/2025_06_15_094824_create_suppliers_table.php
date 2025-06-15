@@ -15,7 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->nullable();
-            $table->string('phone', 15)->nullable();
+            $table->string('phone')->nullable();
+            $table->string('address')->nullable();
             $table->decimal('balance', 12, 2)->default(0);
              $table->softDeletes();
             $table->timestamps();
