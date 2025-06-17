@@ -25,6 +25,7 @@ Route::middleware(['auth:sanctum', 'role:pharmacist'])->prefix('pharmacist')->gr
     Route::post('/medicines', [MedicineController::class, 'store']);
     Route::put('/medicines/{id}', [MedicineController::class, 'update']);
     Route::delete('/medicines/{id}', [MedicineController::class, 'destroy']);
+    Route::post('/medicines/search', [MedicineController::class, 'search']);
 
     Route::get('/categories', [CategoryController::class, 'index']);
     Route::post('/categories', [CategoryController::class, 'store']);
@@ -38,3 +39,4 @@ Route::middleware(['auth:sanctum', 'role:pharmacist'])->prefix('pharmacist')->gr
 });
 
 Route::post('/login', LoginController::class);
+

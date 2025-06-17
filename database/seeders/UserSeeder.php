@@ -13,7 +13,7 @@ class UserSeeder extends Seeder
     /**
      * Run the database seeds.
      */
-    public function run(): void
+    public function run()
     {
         $adminRole = Role::where('name', 'admin')->first();
         $pharmacistRole = Role::where('name', 'pharmacist')->first();
@@ -24,7 +24,7 @@ class UserSeeder extends Seeder
             'password' => Hash::make('password'),
         ]);
 
-        $user->roles()->attach($adminRole); 
+        $user->roles()->attach($adminRole);
 
         $pharmacistUser = User::create([
             'name' => 'Pharmacist User',
@@ -32,7 +32,7 @@ class UserSeeder extends Seeder
             'password' => Hash::make('password'),
         ]);
 
-        $pharmacistUser->roles()->attach($pharmacistRole); 
+        $pharmacistUser->roles()->attach($pharmacistRole);
 
     }
 }
