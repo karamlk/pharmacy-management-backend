@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\MedicineResource;
 use App\Models\Category;
 use App\Models\Medicine;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -151,4 +152,20 @@ class MedicineController extends Controller
 
         return response()->json(['message' => 'Medicine deleted successfully']);
     }
+
+    public function search(request $request){
+        $query = $request->input('query');
+
+        $medicines = Medicine::where('name', 'like', "%{$query}%")
+            ->orWhere('manufacturer', 'like', "%{$query}%")
+            ->orWhere('active_ingredient', 'like', "%{$query}%")
+            ->get();
+
+
+        return response()->json(['Message'=>'Success',
+            'data'=> $medicines,
+            204,
+        ]);
+    }
+
 }
