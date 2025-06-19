@@ -4,6 +4,7 @@ use App\Http\Controllers\Api\Auth\LoginController;
 use App\Http\Controllers\Api\Auth\LogoutController;
 use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\MedicineController;
+use App\Http\Controllers\Api\SupplierController;
 use App\Http\Controllers\Api\SupplierOrderController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -16,7 +17,13 @@ Route::get('/user', function (Request $request) {
 
 
 Route::middleware(['auth:sanctum', 'role:admin'])->prefix('admin')->group(function () {
-    Route::get('/supplier-orders/by-supplier/{supplierName}', [SupplierOrderController::class, 'ordersBySupplier']);
+    Route::get('/suppliers', [SupplierController::class, 'index']);
+    Route::get('/suppliers/{id}', [SupplierController::class, 'show']);
+    Route::post('/suppliers', [SupplierController::class, 'store']);
+    Route::put('suppliers/{id}', [SupplierController::class, 'update']);
+    Route::delete('suppliers/{id}', [SupplierController::class, 'destroy']);
+
+    Route::get('/supplier-orders/by-supplier/{id}', [SupplierOrderController::class, 'ordersBySupplier']);
 });
 
 Route::middleware(['auth:sanctum', 'role:pharmacist'])->prefix('pharmacist')->group(function () {
@@ -32,6 +39,8 @@ Route::middleware(['auth:sanctum', 'role:pharmacist'])->prefix('pharmacist')->gr
     Route::put('/categories/{id}', [CategoryController::class, 'update']);
     Route::delete('/categories/{id}', [CategoryController::class, 'destroy']);
 
+    Route::get('/suppliers', [SupplierController::class, 'index']);
+    Route::get('/suppliers/{id}', [SupplierController::class, 'show']);
     Route::get('/supplier-orders', [SupplierOrderController::class, 'index']);
     Route::post('/supplier-orders', [SupplierOrderController::class, 'store']);
     Route::get('/supplier-orders/{id}', [SupplierOrderController::class, 'show']);
