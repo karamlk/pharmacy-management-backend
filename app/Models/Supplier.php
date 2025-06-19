@@ -11,7 +11,7 @@ class Supplier extends Model
 {
     use SoftDeletes;
 
-    protected $fillable = ['name', 'email', 'phone', 'balance'];
+    protected $fillable = ['name', 'email', 'phone','address', 'balance'];
 
     public function orders()
     {
