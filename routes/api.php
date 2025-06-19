@@ -13,8 +13,6 @@ Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
 
-// Route::middleware('auth:sanctum')->post('/logout', LogoutController::class);
-
 
 Route::middleware(['auth:sanctum', 'role:admin'])->prefix('admin')->group(function () {
     Route::get('/suppliers', [SupplierController::class, 'index']);
@@ -24,6 +22,7 @@ Route::middleware(['auth:sanctum', 'role:admin'])->prefix('admin')->group(functi
     Route::delete('suppliers/{id}', [SupplierController::class, 'destroy']);
 
     Route::get('/supplier-orders/by-supplier/{id}', [SupplierOrderController::class, 'ordersBySupplier']);
+    Route::post('/logout', LogoutController::class)->middleware('auth:sanctum');
 });
 
 Route::middleware(['auth:sanctum', 'role:pharmacist'])->prefix('pharmacist')->group(function () {
@@ -45,6 +44,7 @@ Route::middleware(['auth:sanctum', 'role:pharmacist'])->prefix('pharmacist')->gr
     Route::get('/supplier-orders', [SupplierOrderController::class, 'index']);
     Route::post('/supplier-orders', [SupplierOrderController::class, 'store']);
     Route::get('/supplier-orders/{id}', [SupplierOrderController::class, 'show']);
+    Route::post('/logout', LogoutController::class)->middleware('auth:sanctum');
 });
 
 Route::post('/login', LoginController::class);
