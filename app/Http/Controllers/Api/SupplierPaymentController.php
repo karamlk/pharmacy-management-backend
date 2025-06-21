@@ -3,64 +3,64 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\SupplierPaymentResource;
+use App\Models\Supplier;
 use App\Models\SupplierPayment;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class SupplierPaymentController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
+       $supplierPayments = SupplierPayment::all();
+        return SupplierPaymentResource::collection($supplierPayments);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+        public function show($supplier_id)
     {
-        //
+        $supplier = Supplier::find($supplier_id);
+
+        if (!$supplier) {
+            return response()->json(['error' => 'Supplier not found'], 404);
+        }
+
+        $supplier_payments = $supplier->payments;
+        
+        return SupplierPaymentResource::collection($supplier_payments);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
+
+    public function store(Request $request, $supplier_id)
     {
-        //
+        $user = Auth::user();
+
+        $validatedData = $request->validate([
+            'amount' => 'required|numeric|min:0.01',
+        ]);
+
+         $supplier = Supplier::find($supplier_id);
+
+        if (!$supplier) {
+            return response()->json(['error' => 'Supplier not found'], 404);
+        }
+
+        if ($validatedData['amount'] > $supplier->balance) {
+        return response()->json([
+            'error' => 'Payment amount exceeds supplier balance.'
+        ], 422);
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(SupplierPayment $supplierPayment)
-    {
-        //
+        SupplierPayment::create([
+            'supplier_id' => $supplier_id,
+            'user_id' => $user->id,
+            'amount' => $validatedData['amount'],
+            'payment_date' => now(),
+        ]);
+
+        $supplier->decrement('balance', $validatedData['amount']);
+
+        return response()->json(['message' => 'Supplier payment created successfully.'], 200);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(SupplierPayment $supplierPayment)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, SupplierPayment $supplierPayment)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(SupplierPayment $supplierPayment)
-    {
-        //
-    }
 }
