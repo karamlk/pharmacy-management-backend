@@ -48,7 +48,14 @@ class MedicineController extends Controller
             return response()->json(['error' => 'Medicine not found'], 404);
         }
 
-        return new MedicineResource($medicine);
+        $similarMeds = Medicine::where('active_ingredient', $medicine->active_ingredient)
+            ->where('id', '!=', $medicine->id)
+            ->get();
+
+        return response()->json([
+            'medicine' => new MedicineResource($medicine),
+            'similar_medicines' => MedicineResource::collection($similarMeds)
+        ]);
     }
 
     public function store(Request $request)
@@ -153,7 +160,8 @@ class MedicineController extends Controller
         return response()->json(['message' => 'Medicine deleted successfully']);
     }
 
-    public function search(request $request){
+    public function search(request $request)
+    {
         $query = $request->input('query');
 
         $medicines = Medicine::where('name', 'like', "%{$query}%")
@@ -162,10 +170,10 @@ class MedicineController extends Controller
             ->get();
 
 
-        return response()->json(['Message'=>'Success',
-            'data'=> $medicines,
+        return response()->json([
+            'Message' => 'Success',
+            'data' => $medicines,
             204,
         ]);
     }
-
 }

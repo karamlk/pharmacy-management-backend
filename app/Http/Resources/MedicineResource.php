@@ -12,7 +12,7 @@ class MedicineResource extends JsonResource
      *
      * @return array<string, mixed>
      */
-   public function toArray($request)
+    public function toArray($request)
     {
         return [
             'id' => $this->id,
@@ -21,10 +21,10 @@ class MedicineResource extends JsonResource
             'active_ingredient' => $this->active_ingredient,
             'price' => $this->price,
             'quantity' => $this->quantity,
-            'production_date'=>$this->production_date,
+            'production_date' => $this->production_date,
             'expiry_date' => $this->expiry_date,
             'img_url' => asset($this->img_url),
-            'category_name' => $this->category ? $this->category->name : null
+            'category_name' => $this->category?->name
         ];
     }
 }
