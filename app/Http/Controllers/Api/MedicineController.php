@@ -69,6 +69,7 @@ class MedicineController extends Controller
         foreach ($meds as $med) {
             $validator = Validator::make($med, [
                 'name' => ['required', 'string', 'max:255'],
+                'barcode' => ['required', 'string', 'unique:medicines,barcode'],
                 'category_name' => ['required', 'string', 'exists:categories,name'],
                 'manufacturer' => ['required', 'string', 'max:255'],
                 'active_ingredient' => ['required', 'string', 'max:255'],
@@ -90,6 +91,7 @@ class MedicineController extends Controller
 
             $savedMeds[] = Medicine::create([
                 'name' => $med['name'],
+                'barcode' => $med['barcode'],
                 'category_id' => $category->id,
                 'manufacturer' => $med['manufacturer'],
                 'active_ingredient' => $med['active_ingredient'],
@@ -117,6 +119,7 @@ class MedicineController extends Controller
 
         $validated = $request->validate([
             'name' => ['sometimes', 'string', 'max:255'],
+            'barcode' => ['sometimes', 'string', 'unique:medicines,barcode'],
             'category_name' => ['sometimes', 'string', 'exists:categories,name'],
             'manufacturer' => ['sometimes', 'string', 'max:255'],
             'active_ingredient' => ['sometimes', 'string', 'max:255'],
@@ -160,20 +163,66 @@ class MedicineController extends Controller
         return response()->json(['message' => 'Medicine deleted successfully']);
     }
 
-    public function search(request $request)
+    public function search(Request $request)
     {
-        $query = $request->input('query');
+        $request->validate([
+            'query' => 'nullable|string',
+            'min_price' => 'nullable|numeric|min:0',
+            'max_price' => 'nullable|numeric|min:0',
+            'expiry_from' => 'nullable|date',
+            'expiry_to' => 'nullable|date|after_or_equal:expiry_from',
+            'min_quantity' => 'nullable|integer|min:0',
+            'max_quantity' => 'nullable|integer|min:0',
+        ]);
 
-        $medicines = Medicine::where('name', 'like', "%{$query}%")
-            ->orWhere('manufacturer', 'like', "%{$query}%")
-            ->orWhere('active_ingredient', 'like', "%{$query}%")
-            ->get();
+        $query = $request->input('query');
+        $minPrice = $request->input('min_price');
+        $maxPrice = $request->input('max_price');
+        $expiryFrom = $request->input('expiry_from');
+        $expiryTo = $request->input('expiry_to');
+        $minQuantity = $request->input('min_quantity');
+        $maxQuantity = $request->input('max_quantity');
+
+        $medicinesQuery = Medicine::query();
+
+        if ($query) {
+            $medicinesQuery->where(function ($q) use ($query) {
+                $q->where('barcode', $query)
+                    ->orWhere('name', 'LIKE', "%{$query}%")
+                    ->orWhere('manufacturer', 'LIKE', "%{$query}%")
+                    ->orWhere('active_ingredient', 'LIKE', "%{$query}%");
+            });
+        }
+
+        if ($minPrice) {
+            $medicinesQuery->where('price', '>=', $minPrice);
+        }
+        if ($maxPrice) {
+            $medicinesQuery->where('price', '<=', $maxPrice);
+        }
+
+        if ($expiryFrom) {
+            $medicinesQuery->where('expiry_date', '>=', $expiryFrom);
+        }
+        if ($expiryTo) {
+            $medicinesQuery->where('expiry_date', '<=', $expiryTo);
+        }
+
+        if ($minQuantity) {
+            $medicinesQuery->where('quantity', '>=', $minQuantity);
+        }
+
+        if ($maxQuantity) {
+            $medicinesQuery->where('quantity', '<=', $maxQuantity);
+        }
+
+
+        $medicines = $medicinesQuery->paginate(15);
 
 
         return response()->json([
-            'Message' => 'Success',
-            'data' => $medicines,
-            204,
+            'message' => 'Success',
+            'data' => MedicineResource::collection($medicines),
         ]);
     }
 }

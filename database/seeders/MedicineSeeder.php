@@ -44,7 +44,17 @@ class MedicineSeeder extends Seeder
                 'expiry_date' => Carbon::now()->addMonths(rand(6, 24)),
                 'img_url' => '/images/default_medicine.jpg',
                 'category_id' => $categories[$i % $categories->count()]->id,
+                'barcode' => $this->generateBarcode(),
             ]);
         }
+    }
+
+    private function generateBarcode(): string
+    {
+        $barcode = '';
+        for ($i = 0; $i < 13; $i++) {
+            $barcode .= mt_rand(0, 9);
+        }
+        return $barcode;
     }
 }

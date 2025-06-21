@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('category_id')->constrained('categories');
             $table->string('name');
+            $table->string('barcode')->unique();
             $table->string('manufacturer');
             $table->string('active_ingredient');
             $table->decimal('price', 8, 2);
@@ -22,7 +23,7 @@ return new class extends Migration
             $table->date('production_date');
             $table->date('expiry_date');
             $table->string('img_url')->nullable();
-             $table->softDeletes();
+            $table->softDeletes();
             $table->timestamps();
         });
     }
