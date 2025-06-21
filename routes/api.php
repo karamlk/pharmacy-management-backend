@@ -6,6 +6,7 @@ use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\MedicineController;
 use App\Http\Controllers\Api\SupplierController;
 use App\Http\Controllers\Api\SupplierOrderController;
+use App\Http\Controllers\Api\SupplierPaymentController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -22,6 +23,11 @@ Route::middleware(['auth:sanctum', 'role:admin'])->prefix('admin')->group(functi
     Route::delete('suppliers/{id}', [SupplierController::class, 'destroy']);
 
     Route::get('/supplier-orders/by-supplier/{id}', [SupplierOrderController::class, 'ordersBySupplier']);
+
+    Route::get('/supplier-payments', [SupplierPaymentController::class, 'index']);
+    Route::get('/suppliers/{id}/payments', [SupplierPaymentController::class, 'show']);
+    Route::post('/suppliers/{id}/payments', [SupplierPaymentController::class, 'store']);
+
     Route::post('/logout', LogoutController::class)->middleware('auth:sanctum');
 });
 
@@ -44,8 +50,9 @@ Route::middleware(['auth:sanctum', 'role:pharmacist'])->prefix('pharmacist')->gr
     Route::get('/supplier-orders', [SupplierOrderController::class, 'index']);
     Route::post('/supplier-orders', [SupplierOrderController::class, 'store']);
     Route::get('/supplier-orders/{id}', [SupplierOrderController::class, 'show']);
+    Route::post('/suppliers/{id}/payments', [SupplierPaymentController::class, 'store']);
+
     Route::post('/logout', LogoutController::class)->middleware('auth:sanctum');
 });
 
 Route::post('/login', LoginController::class);
-
