@@ -7,6 +7,7 @@ use App\Http\Controllers\Api\MedicineController;
 use App\Http\Controllers\Api\SupplierController;
 use App\Http\Controllers\Api\SupplierOrderController;
 use App\Http\Controllers\Api\SupplierPaymentController;
+use App\Http\Controllers\Api\UserSessionController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -27,6 +28,8 @@ Route::middleware(['auth:sanctum', 'role:admin'])->prefix('admin')->group(functi
     Route::get('/supplier-payments', [SupplierPaymentController::class, 'index']);
     Route::get('/suppliers/{id}/payments', [SupplierPaymentController::class, 'show']);
     Route::post('/suppliers/{id}/payments', [SupplierPaymentController::class, 'store']);
+
+    Route::get('/user-sessions', [UserSessionController::class, 'index']);
 
     Route::post('/logout', LogoutController::class)->middleware('auth:sanctum');
 });
