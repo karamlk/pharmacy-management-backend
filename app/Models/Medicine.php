@@ -9,11 +9,12 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Medicine extends Model
 {
     use SoftDeletes;
-    
+
     protected $fillable = ['category_id', 'name','barcode','manufacturer', 'active_ingredient', 'price', 'quantity', 'production_date', 'expiry_date', 'img_url'];
 
     public function category(): BelongsTo
     {
         return  $this->belongsTo(Category::class);
     }
+
 }
