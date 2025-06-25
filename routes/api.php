@@ -4,6 +4,7 @@ use App\Http\Controllers\Api\Auth\LoginController;
 use App\Http\Controllers\Api\Auth\LogoutController;
 use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\MedicineController;
+use App\Http\Controllers\Api\SalesController;
 use App\Http\Controllers\Api\SupplierController;
 use App\Http\Controllers\Api\SupplierOrderController;
 use App\Http\Controllers\Api\SupplierPaymentController;
@@ -54,6 +55,8 @@ Route::middleware(['auth:sanctum', 'role:pharmacist'])->prefix('pharmacist')->gr
     Route::post('/supplier-orders', [SupplierOrderController::class, 'store']);
     Route::get('/supplier-orders/{id}', [SupplierOrderController::class, 'show']);
     Route::post('/suppliers/{id}/payments', [SupplierPaymentController::class, 'store']);
+
+    Route::post('/sales', [SalesController::class, 'store']);
 
     Route::post('/logout', LogoutController::class)->middleware('auth:sanctum');
 });
