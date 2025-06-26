@@ -4,10 +4,12 @@ use App\Http\Controllers\Api\Auth\LoginController;
 use App\Http\Controllers\Api\Auth\LogoutController;
 use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\MedicineController;
+use App\Http\Controllers\Api\ProfileController;
 use App\Http\Controllers\Api\SalesController;
 use App\Http\Controllers\Api\SupplierController;
 use App\Http\Controllers\Api\SupplierOrderController;
 use App\Http\Controllers\Api\SupplierPaymentController;
+use App\Http\Controllers\Api\UserManagementController;
 use App\Http\Controllers\Api\UserSessionController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -31,6 +33,15 @@ Route::middleware(['auth:sanctum', 'role:admin'])->prefix('admin')->group(functi
     Route::post('/suppliers/{id}/payments', [SupplierPaymentController::class, 'store']);
 
     Route::get('/user-sessions', [UserSessionController::class, 'index']);
+
+    Route::get('/profile', [ProfileController::class, 'show']);
+    Route::put('/profile', [ProfileController::class, 'update']);
+
+    Route::get('/pharmacists', [UserManagementController::class, 'index']);
+    Route::post('/pharmacists', [UserManagementController::class, 'store']);
+    Route::get('/pharmacists/{id}', [UserManagementController::class, 'show']);
+    Route::put('/pharmacists/{id}', [UserManagementController::class, 'update']);
+    Route::delete('/pharmacists/{id}', [UserManagementController::class, 'destroy']);
 
     Route::post('/logout', LogoutController::class)->middleware('auth:sanctum');
 });
@@ -57,6 +68,10 @@ Route::middleware(['auth:sanctum', 'role:pharmacist'])->prefix('pharmacist')->gr
     Route::post('/suppliers/{id}/payments', [SupplierPaymentController::class, 'store']);
 
     Route::post('/sales', [SalesController::class, 'store']);
+
+
+    Route::get('/profile', [ProfileController::class, 'show']);
+    Route::put('/profile', [ProfileController::class, 'update']);
 
     Route::post('/logout', LogoutController::class)->middleware('auth:sanctum');
 });
