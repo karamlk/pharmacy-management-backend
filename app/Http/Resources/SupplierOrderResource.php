@@ -15,10 +15,11 @@ class SupplierOrderResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-           'supplier_name' => $this->supplier?->name,
+            'id' => $this->id,
+            'supplier_name' => $this->supplier?->name,
             'pharmacist_name' => $this->user?->name,
-            'order_date'=>$this->order_date,
-            'total_price'=>$this->total_price
+            'order_date' => $this->order_date,
+            'total_price' => $this->total_price
         ];
     }
 }
