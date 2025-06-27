@@ -15,6 +15,7 @@ class SupplierPaymentResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
+            'id' => $this->id,
             'supplier_name'  => $this->supplier?->name,
             'processed_by'   => $this->user?->name,
             'amount_paid'    => $this->amount,

@@ -15,6 +15,7 @@ class SupplierOrderItemResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
+            'id' => $this->id,
             'medicine_name' => $this->medicine?->name,
             'quantity' => $this->quantity,
             'unit_price' => $this->unit_price,
