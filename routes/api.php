@@ -48,6 +48,8 @@ Route::middleware(['auth:sanctum', 'role:admin'])->prefix('admin')->group(functi
 
 Route::middleware(['auth:sanctum', 'role:pharmacist'])->prefix('pharmacist')->group(function () {
     Route::get('/medicines', [MedicineController::class, 'index']);
+    Route::get('/medicines/expired', [MedicineController::class, 'expired']);
+    Route::get('/medicines/outOfStock', [MedicineController::class, 'outOfStock']);
     Route::get('/medicines/{id}', [MedicineController::class, 'show']);
     Route::post('/medicines', [MedicineController::class, 'store']);
     Route::put('/medicines/{id}', [MedicineController::class, 'update']);
@@ -69,9 +71,9 @@ Route::middleware(['auth:sanctum', 'role:pharmacist'])->prefix('pharmacist')->gr
 
     Route::post('/sales', [SalesController::class, 'store']);
 
-
     Route::get('/profile', [ProfileController::class, 'show']);
     Route::put('/profile', [ProfileController::class, 'update']);
+
 
     Route::post('/logout', LogoutController::class)->middleware('auth:sanctum');
 });

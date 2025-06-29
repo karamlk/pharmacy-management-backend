@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\MedicineResource;
 use App\Models\Category;
 use App\Models\Medicine;
-
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -15,7 +14,7 @@ class MedicineController extends Controller
     public function index()
     {
 
-        $medicines = Medicine::with('category')->get()->map(function ($medicine) {
+        $medicines = Medicine::available()->with('category')->get()->map(function ($medicine) {
             $medicine->img_url = asset($medicine->img_url);
             return $medicine;
         });
@@ -34,7 +33,7 @@ class MedicineController extends Controller
         }
 
 
-        $medicines = $category->medicines()->get();
+        $medicines = $category->medicines()->available()->get();
 
         return MedicineResource::collection($medicines);
     }
@@ -223,6 +222,32 @@ class MedicineController extends Controller
         return response()->json([
             'message' => 'Success',
             'data' => MedicineResource::collection($medicines),
+        ]);
+    }
+
+    public function expired()
+    {
+        $expiredMedicines = Medicine::with('category')->where('expiry_date', '<', now()->toDateString())->get();
+
+        if ($expiredMedicines->isEmpty()) {
+            return response()->json([
+                'message' => 'No expired medicines found',
+                'data' => []
+            ]);
+        }
+        return response()->json([
+            'message' => 'Expired medicines retrieved successfully',
+            'data' => MedicineResource::collection($expiredMedicines)
+        ]);
+    }
+
+    public function outOfStock()
+    {
+        $outOfStock = Medicine::with('category')->where('quantity', '<=', 0)->get();
+
+        return response()->json([
+            'message' => 'Out-of-stock medicines retrieved successfully.',
+            'data' => MedicineResource::collection($outOfStock)
         ]);
     }
 }
