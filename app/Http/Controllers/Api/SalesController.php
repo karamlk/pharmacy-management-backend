@@ -14,6 +14,11 @@ use Illuminate\Support\Str;
 
 class SalesController extends Controller
 {
+
+    public function index(){
+        $sales = Sales::all();
+        return Sales::collection($sales);
+    }
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -90,5 +95,19 @@ class SalesController extends Controller
                 'details' => $e->getMessage()
             ], 422);
         }
+    }
+    public function show($sale_id){
+        $slaes= Sales::find($sale_id);
+        if(!$slaes){
+            return response()->json(["message" => "Sale not found."], 404);
+        }
+        return Sales::collection($slaes);
+    }
+    public function destroy($sale_id){
+        $sale = Sales::find($sale_id);
+        if(!$sale){
+            return response()->json(["message" => "Sale not found."], 404);
+        }
+        $sale->delete();
     }
 }
