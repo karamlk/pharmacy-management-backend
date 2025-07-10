@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\SaleItemResource;
+use App\Http\Resources\SaleResource;
 use App\Models\Medicine;
 use App\Models\SaleItem;
 use App\Models\Sales;
@@ -10,15 +12,15 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Str;
 
 class SalesController extends Controller
 {
-
-    public function index(){
+    public function index()
+    {
         $sales = Sales::all();
-        return Sales::collection($sales);
+        return SaleResource::collection($sales);
     }
+
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -70,7 +72,7 @@ class SalesController extends Controller
 
             $sale = Sales::create([
                 'user_id' => $user->id,
-               'invoice_number' => 'INV-' . str_pad(Sales::count() + 1, 5, '0', STR_PAD_LEFT),
+                'invoice_number' => 'INV-' . str_pad(Sales::count() + 1, 5, '0', STR_PAD_LEFT),
                 'invoice_date' => now(),
                 'total_price' => $totalPrice
             ]);
@@ -87,7 +89,6 @@ class SalesController extends Controller
                 'invoice_number' => $sale->invoice_number,
                 'total_price' => $sale->total_price
             ]);
-
         } catch (\Exception $e) {
             DB::rollBack();
             return response()->json([
@@ -96,18 +97,37 @@ class SalesController extends Controller
             ], 422);
         }
     }
-    public function show($sale_id){
-        $slaes= Sales::find($sale_id);
-        if(!$slaes){
+
+    public function show($sale_id)
+    {
+        $sale = Sales::with([
+            'user' => fn($q) => $q->withTrashed(),
+            'items.medicine' => fn($q) => $q->withTrashed()
+        ])->find($sale_id);
+
+        if (!$sale) {
             return response()->json(["message" => "Sale not found."], 404);
         }
-        return Sales::collection($slaes);
+
+        return SaleItemResource::collection($sale->items);
     }
-    public function destroy($sale_id){
-        $sale = Sales::find($sale_id);
-        if(!$sale){
-            return response()->json(["message" => "Sale not found."], 404);
-        }
-        $sale->delete();
-    }
+
+    // public function destroy($sale_id)
+    // {
+    //     $sale = Sales::find($sale_id);
+
+    //     if (!$sale) {
+    //         return response()->json(["message" => "Sale not found."], 404);
+    //     }
+
+    //     $saleItems = $sale->sale_items;
+
+    //     foreach ($saleItems as $saleItem) {
+    //         $saleItem->medicine->increment('quantity', $saleItem->quantity);
+    //     }
+
+    //     $sale->delete();
+
+    //     return response()->json(['message' => 'Sale deleted successfully']);
+    // }
 }

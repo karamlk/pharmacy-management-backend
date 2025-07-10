@@ -69,6 +69,8 @@ Route::middleware(['auth:sanctum', 'role:pharmacist'])->prefix('pharmacist')->gr
     Route::get('/supplier-orders/{id}', [SupplierOrderController::class, 'show']);
     Route::post('/suppliers/{id}/payments', [SupplierPaymentController::class, 'store']);
 
+    Route::get('/sales', [SalesController::class, 'index']);
+    Route::get('/sales/{id}', [SalesController::class, 'show']);
     Route::post('/sales', [SalesController::class, 'store']);
 
     Route::get('/profile', [ProfileController::class, 'show']);
