@@ -20,6 +20,10 @@ Route::get('/user', function (Request $request) {
 
 
 Route::middleware(['auth:sanctum', 'role:admin'])->prefix('admin')->group(function () {
+    Route::get('/medicines', [MedicineController::class, 'index']);
+    Route::get('/medicines/expired', [MedicineController::class, 'expired']);
+    Route::get('/medicines/outOfStock', [MedicineController::class, 'outOfStock']);
+
     Route::get('/suppliers', [SupplierController::class, 'index']);
     Route::get('/suppliers/{id}', [SupplierController::class, 'show']);
     Route::post('/suppliers', [SupplierController::class, 'store']);
