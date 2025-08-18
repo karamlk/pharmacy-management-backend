@@ -4,6 +4,7 @@ use App\Http\Controllers\Api\Auth\LoginController;
 use App\Http\Controllers\Api\Auth\LogoutController;
 use App\Http\Controllers\Api\CategoryController;
 use App\Http\Controllers\Api\MedicineController;
+use App\Http\Controllers\Api\PerformanceAnalysisController;
 use App\Http\Controllers\Api\ProfileController;
 use App\Http\Controllers\Api\SalesController;
 use App\Http\Controllers\Api\SupplierController;
@@ -46,6 +47,8 @@ Route::middleware(['auth:sanctum', 'role:admin'])->prefix('admin')->group(functi
     Route::get('/pharmacists/{id}', [UserManagementController::class, 'show']);
     Route::put('/pharmacists/{id}', [UserManagementController::class, 'update']);
     Route::delete('/pharmacists/{id}', [UserManagementController::class, 'destroy']);
+
+    Route::get('/performanceAnalysis', PerformanceAnalysisController::class);
 
     Route::post('/logout', LogoutController::class)->middleware('auth:sanctum');
 });
