@@ -34,7 +34,7 @@ class SupplierSeeder extends Seeder
             'email' => 'info@sanofi.com',
             'phone' => '1122334455',
             'address' => 'Paris, France',
-            'balance' => 500.00,
+            'balance' => 2500.00,
         ]);
     }
 }

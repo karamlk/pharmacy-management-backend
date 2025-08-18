@@ -22,6 +22,7 @@ class UserSeeder extends Seeder
             'name' => 'Admin User',
             'email' => 'admin@example.com',
             'password' => Hash::make('password'),
+            'hourly_rate' => null
         ]);
 
         $user->roles()->attach($adminRole);
@@ -30,9 +31,25 @@ class UserSeeder extends Seeder
             'name' => 'Pharmacist User',
             'email' => 'pharmacist@example.com',
             'password' => Hash::make('password'),
+            'hourly_rate' => 25.50
         ]);
 
         $pharmacistUser->roles()->attach($pharmacistRole);
 
+        $pharmacist2 = User::create([
+            'name' => 'Pharmacist John',
+            'email' => 'pharmacist.john@example.com',
+            'password' => Hash::make('password'),
+            'hourly_rate' => 28.00,
+        ]);
+        $pharmacist2->roles()->attach($pharmacistRole);
+
+        $pharmacist3 = User::create([
+            'name' => 'Pharmacist Emily',
+            'email' => 'pharmacist.emily@example.com',
+            'password' => Hash::make('password'),
+            'hourly_rate' => 26.75,
+        ]);
+        $pharmacist3->roles()->attach($pharmacistRole);
     }
 }
