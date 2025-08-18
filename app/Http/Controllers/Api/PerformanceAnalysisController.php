@@ -32,7 +32,8 @@ class PerformanceAnalysisController extends Controller
             ->get()
             ->map(fn($payment) => [
                 'id' => $payment->supplier->id,
-                $payment->supplier->name => (float) $payment->total_paid
+                'name_supplier'=>$payment->supplier->name,
+                'payment_supplier'=>(float) $payment->total_paid
             ]);
 
         $total_paid_to_suppliers = (float) SupplierPayment::sum('amount');
