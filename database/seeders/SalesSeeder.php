@@ -7,7 +7,6 @@ use App\Models\SaleItem;
 use App\Models\Sales;
 use App\Models\User;
 use Carbon\Carbon;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
 
@@ -22,7 +21,7 @@ class SalesSeeder extends Seeder
             $q->where('name', 'pharmacist');
         })->get();
 
-        $medicines = Medicine::all();
+        $medicines = Medicine::where('category_id', '!=', 1)->get();
 
         if ($pharmacists->isEmpty() || $medicines->isEmpty()) {
             $this->command->warn("⚠️ Make sure pharmacists and medicines exist before seeding sales.");
@@ -43,10 +42,13 @@ class SalesSeeder extends Seeder
             $totalPrice = 0;
 
             // Each sale has 1–5 medicines
-            $randomMeds = $medicines->random(rand(1, 5));
+            $randomMeds = $medicines;
             foreach ($randomMeds as $medicine) {
                 $quantity = rand(1, 3); // usually smaller than supplier orders
                 $unitPrice = $medicine->price;
+                if ($medicine->quantity < $quantity) {
+                    continue;
+                }
 
                 SaleItem::create([
                     'sale_id' => $sale->id,
