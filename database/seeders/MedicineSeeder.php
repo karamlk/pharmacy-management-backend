@@ -27,10 +27,10 @@ class MedicineSeeder extends Seeder
             ['Amoxicillin', 'GlaxoSmithKline', 'Amoxicillin', 5.00, 80],
             ['Vitamin C', 'Nature’s Way', 'Ascorbic Acid', 1.20, 200],
             ['Cetirizine', 'Zyrtec', 'Cetirizine Hydrochloride', 3.00, 50],
-            ['med-5', 'x', 'Ingredient-5', 3.00, 50],
-            ['med-6', 'y', 'Ingredient-6', 9.00, 50],
-            ['med-7', 'z', 'Ingredient-7', 1.60, 50],
-            ['med-8', 'xy', 'Ingredient-8', 7.20, 50],
+            ['med-5', 'x', 'Ingredient-5', 3.00, 120],
+            ['med-6', 'y', 'Ingredient-6', 9.00, 110],
+            ['med-7', 'z', 'Ingredient-7', 1.60, 100],
+            ['med-8', 'xy', 'Ingredient-8', 7.20, 140],
         ];
 
         foreach ($sampleMedicines as $i => $data) {
