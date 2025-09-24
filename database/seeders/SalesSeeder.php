@@ -15,21 +15,27 @@ class SalesSeeder extends Seeder
     /**
      * Run the database seeds.
      */
-    public function run(): void
+   public function run(): void
     {
         $pharmacists = User::whereHas('roles', function ($q) {
             $q->where('name', 'pharmacist');
         })->get();
 
-        $medicines = Medicine::where('category_id', '!=', 1)->get();
+        $today = Carbon::today();
+
+        // Only valid medicines (not expired & in stock & not Uncategorized)
+        $medicines = Medicine::where('category_id', '!=', 1)
+            ->where('quantity', '>', 0)
+            ->whereDate('expiry_date', '>', $today)
+            ->get();
 
         if ($pharmacists->isEmpty() || $medicines->isEmpty()) {
-            $this->command->warn("⚠️ Make sure pharmacists and medicines exist before seeding sales.");
+            $this->command->warn(" Make sure pharmacists and valid medicines exist before seeding sales.");
             return;
         }
 
-        // Create 10 random sales
-        for ($i = 0; $i < 50; $i++) {
+        // Create 50 random sales
+        for ($i = 0; $i < 75; $i++) {
             $pharmacist = $pharmacists->random();
 
             $sale = Sales::create([
@@ -41,14 +47,16 @@ class SalesSeeder extends Seeder
 
             $totalPrice = 0;
 
-            // Each sale has 1–5 medicines
-            $randomMeds = $medicines;
+            // Pick 1–5 random medicines for this sale
+            $randomMeds = $medicines->random(rand(1, 5));
+
             foreach ($randomMeds as $medicine) {
-                $quantity = rand(1, 3); // usually smaller than supplier orders
-                $unitPrice = $medicine->price;
-                if ($medicine->quantity < $quantity) {
-                    continue;
+                if ($medicine->quantity <= 0) {
+                    continue; // skip out-of-stock just in case
                 }
+
+                $quantity = rand(1, min(3, $medicine->quantity)); // don’t exceed stock
+                $unitPrice = $medicine->price;
 
                 SaleItem::create([
                     'sale_id' => $sale->id,
@@ -59,7 +67,7 @@ class SalesSeeder extends Seeder
 
                 $totalPrice += $quantity * $unitPrice;
 
-                // Decrease stock (simulate real sale)
+                // Reduce stock
                 $medicine->decrement('quantity', $quantity);
             }
 
