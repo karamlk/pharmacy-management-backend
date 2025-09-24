@@ -11,19 +11,26 @@ class CategorySeeder extends Seeder
     /**
      * Run the database seeds.
      */
-   public function run(): void
+    public function run(): void
     {
-        $categories = ['Pain Relief', 'Antibiotics', 'Vitamins', 'Allergy'];
+        // $categories = ['Pain Relief', 'Antibiotics', 'Vitamins', 'Allergy'];
 
         Category::firstOrCreate(
             ['name' => 'Uncategorized'],
-            ['img_url' => '/images/default_category.png']
+            ['img_url' => '/images/categories/default_category.png']
         );
 
-        foreach ($categories as $name) {
+        $categories = [
+            ['name' => 'Pain Relief', 'img_url' => '/images/categories/pain_relief.jpg'],
+            ['name' => 'Antibiotics', 'img_url' => '/images/categories/antibiotics.png'],
+            ['name' => 'Vitamins', 'img_url' => '/images/categories/vitamins.jpg'],
+            ['name' => 'Allergy', 'img_url' => '/images/categories/allergy.png'],
+        ];
+
+        foreach ($categories as $category) {
             Category::firstOrCreate(
-                ['name' => $name],
-                ['img_url' => '/images/default_category.png']
+                ['name' => $category['name']],
+                ['img_url' => $category['img_url']]
             );
         }
     }

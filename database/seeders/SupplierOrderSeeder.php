@@ -25,7 +25,7 @@ class SupplierOrderSeeder extends Seeder
         $medicines = Medicine::all();
 
         if ($suppliers->isEmpty() || $medicines->isEmpty() || $pharmacists->isEmpty()) {
-            $this->command->warn("⚠️ Make sure suppliers, medicines, and pharmacist users exist before seeding orders.");
+            $this->command->warn(" Make sure suppliers, medicines, and pharmacist users exist before seeding orders.");
             return;
         }
 

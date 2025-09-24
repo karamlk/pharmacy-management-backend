@@ -23,7 +23,7 @@ class SupplierPaymentSeeder extends Seeder
         $suppliers = Supplier::all();
 
         if ($pharmacists->isEmpty() || $suppliers->isEmpty()) {
-            $this->command->warn("⚠️ Make sure pharmacists and suppliers exist before seeding payments.");
+            $this->command->warn(" Make sure pharmacists and suppliers exist before seeding payments.");
             return;
         }
 
