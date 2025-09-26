@@ -8,6 +8,7 @@ use App\Models\Category;
 use App\Models\Medicine;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 
 class MedicineController extends Controller
 {
@@ -118,7 +119,7 @@ class MedicineController extends Controller
 
         $validated = $request->validate([
             'name' => ['sometimes', 'string', 'max:255'],
-            'barcode' => ['sometimes', 'string', 'unique:medicines,barcode'],
+            'barcode' => ['sometimes', 'string', Rule::unique('medicines')->ignore($medicine->id)],
             'category_name' => ['sometimes', 'string', 'exists:categories,name'],
             'manufacturer' => ['sometimes', 'string', 'max:255'],
             'active_ingredient' => ['sometimes', 'string', 'max:255'],
