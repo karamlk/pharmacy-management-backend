@@ -60,7 +60,7 @@ class SupplierPaymentController extends Controller
 
         $supplier->decrement('balance', $validatedData['amount']);
 
-        return response()->json(['message' => 'Supplier payment created successfully.'], 200);
+        return response()->json(['message' => 'Supplier payment created successfully.'], 201);
     }
 
 }

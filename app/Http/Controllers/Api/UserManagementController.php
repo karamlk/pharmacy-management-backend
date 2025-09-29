@@ -45,13 +45,22 @@ class UserManagementController extends Controller
 
     public function show($id)
     {
-        $user = User::findOrFail($id);
+        $user = User::find($id);
+
+        if (! $user) {
+            return response()->json(['error' => 'user not found'], 404);
+        }
+
         return new PharmacistResource($user);
     }
 
     public function update(Request $request, $id)
     {
-        $user = User::findOrFail($id);
+        $user = User::find($id);
+
+        if (! $user) {
+            return response()->json(['error' => 'user not found'], 404);
+        }
 
         if (!$user->roles->contains('name', 'pharmacist')) {
             return response()->json(['error' => 'User is not a pharmacist'], 403);
@@ -75,7 +84,11 @@ class UserManagementController extends Controller
 
     public function destroy($id)
     {
-        $user = User::findOrFail($id);
+        $user = User::find($id);
+
+        if (! $user) {
+            return response()->json(['error' => 'user not found'], 404);
+        }
 
         if (!$user->roles->contains('name', 'pharmacist')) {
             return response()->json(['error' => 'User is not a pharmacist'], 403);
