@@ -32,8 +32,7 @@ class ProfileController extends Controller
         $validated = $request->validate([
             'name' => 'sometimes|string|max:255',
             'email' => 'sometimes|email|unique:users,email,' . $user->id,
-            'password' => 'nullable|string|min:6|confirmed',
-            'hourly_rate' => 'sometimes|numeric|min:0',
+            'password' => 'nullable|string|min:6|confirmed'
         ]);
 
         if (isset($validated['password'])) {
