@@ -1,61 +1,192 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+#  Pharmacy Management System – Backend API  
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+A **Laravel-based RESTful API** for managing a pharmacy’s operations, including medicines, suppliers, pharmacists work hours, salaries, and inventory.  
 
-## About Laravel
+---
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+# Features
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- Authentication (Login/Logout)  
+- User & Role Management (Admin, Pharmacist)  
+- Profile management with password change  
+- Supplier management  
+- Medicine management (with images, stock tracking, expiry detection)  
+- Categories management  
+- Sales & Invoice management  
+- Supplier Orders (Purchases) management  
+- Pharmacist work hours & salary calculation  
+- Performance analysis reports  
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+---
 
-## Learning Laravel
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+# Usage
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+## Profile
+- Each user has a profile of their own.
+- You can update your profile credentials.
+- You can change your password.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## Users
+- Displays a list of all pharmacists in the system.
+- Add a new user by clicking the **Add pharmacist** button.
+- Edit pharmacist details via the **Edit** button.
+- Delete pharmacist using the **Delete** button.
 
-## Laravel Sponsors
+## Suppliers
+- Lists all medicines suppliers.
+- Add new suppliers.
+- Edit or delete supplier details as needed.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+## Sales
+- Displays all sales made in the system.
+- Add new sales by selling medicines.
 
-### Premium Partners
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development/)**
-- **[Active Logic](https://activelogic.com)**
+## Orders
+- Contains all medicine purchases.
+- Add order by writing the name of every medicine 
+you want to purchase from a supplier with the desired quantity.
 
-## Contributing
+## Medicines
+- Lists all medicines in the system.
+- Add medicine.
+- Edit or delete medicines as needed.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+  ### ➤ Out of Stock
+- Medicines with zero quantity are automatically detected.
+- No manual action required.
 
-## Code of Conduct
+  ### ➤ Expired
+- Medicines past their expiry date are automatically detected.
+- No manual action required.
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+## Categories
+- Lists all medicines categories.
+- Add, edit, or delete categories via the corresponding buttons.
 
-## Security Vulnerabilities
+## Pharmacist Work Hours & Salary
+- Tracks working hours from login/logout sessions.
+- Admins can see the  calculated salaries based on:  
+  `Hourly Rate × Total Worked Hours`
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## Performance Analysis
+- Admins can view:
+  - Monthly supplier costs
+  - Sales revenue
+  - Pharmacist salaries
 
-## License
+---
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+# 🛠️ Tech Stack  
+
+- **Framework:** Laravel 11  
+- **Language:** PHP 8+  
+- **Database:** MySQL  
+- **Auth:** Laravel Sanctum  
+- **Testing:** PHPUnit  
+
+---
+
+# ✅ Test Coverage
+ Run the test suite
+ 
+ ```bash
+ php artisan test
+ ```
+- **Auth**
+  - Login
+  - Logout
+
+- **Profile**
+  - Update info
+  - Change password
+
+- **Users**
+  - Create, Read, Update, Delete (CRUD)
+
+- **Suppliers**
+  - CRUD operations
+  - Orders
+  - Payments
+
+- **Medicines**
+  - CRUD operations
+  - Filters: expired, out of stock, search
+
+
+- **Sales**
+  - Invoice creation
+  - List all the sales
+  - Show the details of every sale
+
+- **Performance**
+  - Pharmacist work hours tracking
+  - Salary calculation
+  - Monthly cost reporting
+
+---
+
+# Installation
+
+## 1. Clone the Repository
+
+```bash
+git clone https://github.com/karamlk/pharmacy-management-backend.git
+cd pharmacy-management-backend
+```
+
+## 2. Install Dependencies
+
+```bash
+composer install
+```
+
+## 3. Copy the example environment file 
+
+```bash
+cp .env.example .env
+```
+
+Then edit `.env` and configure your database:
+
+```env
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=your_database
+DB_USERNAME=your_username
+DB_PASSWORD=your_password
+```
+
+### 4. Generate application key
+
+```bash
+php artisan key:generate
+```
+
+### 5. Run migrations with seeders:
+
+```bash
+php artisan migrate --seed
+```
+
+### 6. Serve Locally
+
+```bash
+php artisan serve
+```
+
+---
+
+## 📝 API Documentation
+
+All API endpoints with examples are included in the Postman collection.  
+
+You can import it directly in Postman:
+
+1. Open Postman.
+2. Click **Import** → **File** → Select `postman/pharmacy-management.postman_collection.json`.
+3. Start testing the endpoints.
+
+The collection file is located in the repository at: `postman/pharmacy-management.postman_collection.json`.
