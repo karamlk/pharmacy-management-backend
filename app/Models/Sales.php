@@ -2,10 +2,12 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Sales extends Model
 {
+    use HasFactory;
     protected $table = 'sales';
     protected $fillable = ['user_id', 'invoice_number', 'invoice_date', 'total_price'];
 
@@ -13,7 +15,7 @@ class Sales extends Model
     {
         return $this->belongsTo(User::class);
     }
-    
+
     public function items()
     {
         return $this->hasMany(SaleItem::class, 'sale_id');

@@ -3,13 +3,14 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Medicine extends Model
 {
-    use SoftDeletes;
+    use HasFactory,SoftDeletes;
 
     protected $fillable = ['category_id', 'name', 'barcode', 'manufacturer', 'active_ingredient', 'price', 'quantity', 'production_date', 'expiry_date', 'img_url'];
 
