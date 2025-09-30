@@ -1,0 +1,4865 @@
+{
+	"info": {
+		"_postman_id": "6591d371-1f32-4214-a7c0-a176d86e942a",
+		"name": "Pharmacy-Api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "40073765"
+	},
+	"item": [
+		{
+			"name": "Admin",
+			"item": [
+				{
+					"name": "Supplier",
+					"item": [
+						{
+							"name": "supplier_payment",
+							"item": [
+								{
+									"name": "pay a supplier",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "5|fIPBZk8ogmIE7XrBnaek8H4TF1qDiASjg4tT1k7C902deffa",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"amount\":400\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/admin/suppliers/2/payments",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"admin",
+												"suppliers",
+												"2",
+												"payments"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "pay a supplier",
+											"originalRequest": {
+												"method": "POST",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json",
+														"type": "text"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": "{\r\n    \"amount\":400\r\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{base_url}}/pharmacist/suppliers/2/payments",
+													"host": [
+														"{{base_url}}"
+													],
+													"path": [
+														"pharmacist",
+														"suppliers",
+														"2",
+														"payments"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Host",
+													"value": "127.0.0.1:8000"
+												},
+												{
+													"key": "Connection",
+													"value": "close"
+												},
+												{
+													"key": "X-Powered-By",
+													"value": "PHP/8.2.12"
+												},
+												{
+													"key": "Cache-Control",
+													"value": "no-cache, private"
+												},
+												{
+													"key": "Date",
+													"value": "Sun, 22 Jun 2025 20:46:39 GMT"
+												},
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												},
+												{
+													"key": "Access-Control-Allow-Origin",
+													"value": "*"
+												}
+											],
+											"cookie": [],
+											"body": "{\n    \"message\": \"Supplier payment created successfully.\"\n}"
+										}
+									]
+								},
+								{
+									"name": "show the payments for a supplier",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "5|fIPBZk8ogmIE7XrBnaek8H4TF1qDiASjg4tT1k7C902deffa",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "{{base_url}}/admin/suppliers/2/payments",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"admin",
+												"suppliers",
+												"2",
+												"payments"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "show the payments for a supplier",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json",
+														"type": "text"
+													}
+												],
+												"url": {
+													"raw": "{{base_url}}/admin/suppliers/2/payments",
+													"host": [
+														"{{base_url}}"
+													],
+													"path": [
+														"admin",
+														"suppliers",
+														"2",
+														"payments"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "json",
+											"header": [
+												{
+													"key": "Host",
+													"value": "127.0.0.1:8000"
+												},
+												{
+													"key": "Connection",
+													"value": "close"
+												},
+												{
+													"key": "X-Powered-By",
+													"value": "PHP/8.2.12"
+												},
+												{
+													"key": "Cache-Control",
+													"value": "no-cache, private"
+												},
+												{
+													"key": "Date",
+													"value": "Thu, 10 Jul 2025 13:22:29 GMT"
+												},
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												},
+												{
+													"key": "Access-Control-Allow-Origin",
+													"value": "*"
+												}
+											],
+											"cookie": [],
+											"body": "{\n    \"data\": [\n        {\n            \"id\": 1,\n            \"supplier_name\": \"Novartis\",\n            \"processed_by\": \"Admin-1\",\n            \"amount_paid\": \"400.00\",\n            \"payment_date\": \"2025-07-10\"\n        },\n        {\n            \"id\": 2,\n            \"supplier_name\": \"Novartis\",\n            \"processed_by\": \"Admin-1\",\n            \"amount_paid\": \"800.00\",\n            \"payment_date\": \"2025-07-10\"\n        }\n    ]\n}"
+										}
+									]
+								},
+								{
+									"name": "display all the payments in the system",
+									"protocolProfileBehavior": {
+										"disableBodyPruning": true
+									},
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "NHHuR45Kml137VmcpFvdZ6miqEagZAAAJNOQHLoSea91e50c",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": ""
+										},
+										"url": {
+											"raw": "{{base_url}}/admin/supplier-payments",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"admin",
+												"supplier-payments"
+											]
+										}
+									},
+									"response": [
+										{
+											"name": "display all the payments in the system",
+											"originalRequest": {
+												"method": "GET",
+												"header": [
+													{
+														"key": "Accept",
+														"value": "application/json",
+														"type": "text"
+													}
+												],
+												"body": {
+													"mode": "raw",
+													"raw": ""
+												},
+												"url": {
+													"raw": "{{base_url}}/admin/supplier-payments",
+													"host": [
+														"{{base_url}}"
+													],
+													"path": [
+														"admin",
+														"supplier-payments"
+													]
+												}
+											},
+											"status": "OK",
+											"code": 200,
+											"_postman_previewlanguage": "",
+											"header": [
+												{
+													"key": "Host",
+													"value": "127.0.0.1:8000"
+												},
+												{
+													"key": "Connection",
+													"value": "close"
+												},
+												{
+													"key": "X-Powered-By",
+													"value": "PHP/8.2.12"
+												},
+												{
+													"key": "Cache-Control",
+													"value": "no-cache, private"
+												},
+												{
+													"key": "Date",
+													"value": "Tue, 30 Sep 2025 17:45:37 GMT"
+												},
+												{
+													"key": "Content-Type",
+													"value": "application/json"
+												},
+												{
+													"key": "Access-Control-Allow-Origin",
+													"value": "*"
+												}
+											],
+											"cookie": [],
+											"body": "{\n    \"data\": [\n        {\n            \"id\": 1,\n            \"supplier_name\": \"Novartis\",\n            \"processed_by\": \"Pharmacist Emily\",\n            \"amount_paid\": \"514.00\",\n            \"payment_date\": \"2025-09-23\"\n        },\n        {\n            \"id\": 2,\n            \"supplier_name\": \"Sanofi\",\n            \"processed_by\": \"Pharmacist User\",\n            \"amount_paid\": \"221.00\",\n            \"payment_date\": \"2025-09-26\"\n        },\n        {\n            \"id\": 3,\n            \"supplier_name\": \"Sanofi\",\n            \"processed_by\": \"Pharmacist John\",\n            \"amount_paid\": \"261.00\",\n            \"payment_date\": \"2025-09-17\"\n        },\n        {\n            \"id\": 4,\n            \"supplier_name\": \"Novartis\",\n            \"processed_by\": \"Pharmacist Emily\",\n            \"amount_paid\": \"571.00\",\n            \"payment_date\": \"2025-09-20\"\n        },\n        {\n            \"id\": 5,\n            \"supplier_name\": \"Pfizer\",\n            \"processed_by\": \"Pharmacist User\",\n            \"amount_paid\": \"554.00\",\n            \"payment_date\": \"2025-09-17\"\n        },\n        {\n            \"id\": 6,\n            \"supplier_name\": \"Novartis\",\n            \"processed_by\": \"Pharmacist User\",\n            \"amount_paid\": \"328.00\",\n            \"payment_date\": \"2025-08-16\"\n        },\n        {\n            \"id\": 7,\n            \"supplier_name\": \"Sanofi\",\n            \"processed_by\": \"Pharmacist Emily\",\n            \"amount_paid\": \"351.00\",\n            \"payment_date\": \"2025-08-07\"\n        },\n        {\n            \"id\": 8,\n            \"supplier_name\": \"Novartis\",\n            \"processed_by\": \"Pharmacist John\",\n            \"amount_paid\": \"522.00\",\n            \"payment_date\": \"2025-08-08\"\n        },\n        {\n            \"id\": 9,\n            \"supplier_name\": \"Sanofi\",\n            \"processed_by\": \"Pharmacist John\",\n            \"amount_paid\": \"493.00\",\n            \"payment_date\": \"2025-09-24\"\n        },\n        {\n            \"id\": 10,\n            \"supplier_name\": \"Sanofi\",\n            \"processed_by\": \"Pharmacist User\",\n            \"amount_paid\": \"597.00\",\n            \"payment_date\": \"2025-08-08\"\n        },\n        {\n            \"id\": 11,\n            \"supplier_name\": \"Sanofi\",\n            \"processed_by\": \"Pharmacist User\",\n            \"amount_paid\": \"391.00\",\n            \"payment_date\": \"2025-09-14\"\n        },\n        {\n            \"id\": 12,\n            \"supplier_name\": \"Novartis\",\n            \"processed_by\": \"Pharmacist John\",\n            \"amount_paid\": \"265.50\",\n            \"payment_date\": \"2025-08-23\"\n        },\n        {\n            \"id\": 13,\n            \"supplier_name\": \"Pfizer\",\n            \"processed_by\": \"Pharmacist Emily\",\n            \"amount_paid\": \"353.00\",\n            \"payment_date\": \"2025-09-07\"\n        },\n        {\n            \"id\": 14,\n            \"supplier_name\": \"Sanofi\",\n            \"processed_by\": \"Pharmacist John\",\n            \"amount_paid\": \"186.00\",\n            \"payment_date\": \"2025-08-29\"\n        }\n    ]\n}"
+										}
+									]
+								}
+							]
+						},
+						{
+							"name": "orders by supplier",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "3|TpYv9QaGbHeUDndStdgT1ITtJ1DDSn8j4R7vFcDR5c0dc8eb",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/admin/supplier-orders/by-supplier/1",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"admin",
+										"supplier-orders",
+										"by-supplier",
+										"1"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "orders by supplier",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{base_url}}/admin/supplier-orders/by-supplier/2",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"admin",
+												"supplier-orders",
+												"by-supplier",
+												"2"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.12"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Date",
+											"value": "Fri, 27 Jun 2025 13:58:08 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"data\": [\n        {\n            \"id\": 1,\n            \"supplier_name\": \"Novartis\",\n            \"pharmacist_name\": \"Pharmacist User\",\n            \"order_date\": \"2025-06-27\",\n            \"total_price\": \"80.00\"\n        }\n    ]\n}"
+								}
+							]
+						},
+						{
+							"name": "display all the suppliers",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "4|yYBSbSGrJ6limjL8ENXbePIt7xkeGeLYQ9OudscQ2c1a15ee",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/admin/suppliers",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"admin",
+										"suppliers"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "display all the suppliers",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{base_url}}/admin/suppliers",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"admin",
+												"suppliers"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.12"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Date",
+											"value": "Fri, 27 Jun 2025 13:58:31 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"data\": [\n        {\n            \"id\": 1,\n            \"name\": \"Pfizer\",\n            \"phone\": \"1234567890\",\n            \"email\": \"contact@pfizer.com\",\n            \"address\": \"New York, USA\",\n            \"balance\": \"1500.00\"\n        },\n        {\n            \"id\": 2,\n            \"name\": \"Novartis\",\n            \"phone\": \"9876543210\",\n            \"email\": \"support@novartis.com\",\n            \"address\": \"Basel, Switzerland\",\n            \"balance\": \"2280.50\"\n        },\n        {\n            \"id\": 3,\n            \"name\": \"Sanofi\",\n            \"phone\": \"1122334455\",\n            \"email\": \"info@sanofi.com\",\n            \"address\": \"Paris, France\",\n            \"balance\": \"500.00\"\n        }\n    ]\n}"
+								}
+							]
+						},
+						{
+							"name": "show a supplier",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "4|yYBSbSGrJ6limjL8ENXbePIt7xkeGeLYQ9OudscQ2c1a15ee",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/admin/suppliers/2",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"admin",
+										"suppliers",
+										"2"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "show a supplier",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{base_url}}/admin/suppliers/2",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"admin",
+												"suppliers",
+												"2"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.12"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Date",
+											"value": "Fri, 27 Jun 2025 13:58:48 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"data\": {\n        \"id\": 2,\n        \"name\": \"Novartis\",\n        \"phone\": \"9876543210\",\n        \"email\": \"support@novartis.com\",\n        \"address\": \"Basel, Switzerland\",\n        \"balance\": \"2280.50\"\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "store a supplier",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "4|yYBSbSGrJ6limjL8ENXbePIt7xkeGeLYQ9OudscQ2c1a15ee",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\":\"supplier-3\",\r\n    \"email\":\"supp3@gmail.com\",\r\n    \"phone\":\"0912845678\",\r\n    \"address\":\"Damascus\",\r\n    \"balance\":100\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/admin/suppliers",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"admin",
+										"suppliers"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "store a supplier",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"name\":\"supplier-3\",\r\n    \"email\":\"supp3@gmail.com\",\r\n    \"phone\":\"0912845678\",\r\n    \"address\":\"Damascus\",\r\n    \"balance\":100\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/admin/suppliers",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"admin",
+												"suppliers"
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.12"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Date",
+											"value": "Fri, 27 Jun 2025 13:59:14 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"data\": {\n        \"id\": 4,\n        \"name\": \"supplier-3\",\n        \"phone\": \"0912845678\",\n        \"email\": \"supp3@gmail.com\",\n        \"address\": \"Damascus\",\n        \"balance\": 100\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "update a supplier",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "4|yYBSbSGrJ6limjL8ENXbePIt7xkeGeLYQ9OudscQ2c1a15ee",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\":\"3-supp\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/admin/suppliers/3",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"admin",
+										"suppliers",
+										"3"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "update a supplier",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"name\":\"supplier-4\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/admin/suppliers/4",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"admin",
+												"suppliers",
+												"4"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.12"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Date",
+											"value": "Fri, 27 Jun 2025 14:00:23 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"data\": {\n        \"id\": 4,\n        \"name\": \"supplier-4\",\n        \"phone\": \"0912845678\",\n        \"email\": \"supp3@gmail.com\",\n        \"address\": \"Damascus\",\n        \"balance\": \"100.00\"\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "delete a supplier",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "4|wExn4V1d2BIyPSxW5FmH76qnCWDvvYB1UtvspFIh95bf1bdd",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/admin/suppliers/4",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"admin",
+										"suppliers",
+										"4"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "delete a supplier",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{base_url}}/admin/suppliers/4",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"admin",
+												"suppliers",
+												"4"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.12"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Date",
+											"value": "Fri, 27 Jun 2025 14:01:00 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"Supplier deleted successfully\"\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Profile",
+					"item": [
+						{
+							"name": "show the profile",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "2|qYYZoDGWx3oKsUrrFwhY4YZe06AgHW8O4CpSyHsn45a66be0",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/admin/profile",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"admin",
+										"profile"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "show the profile",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{base_url}}/admin/profile",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"admin",
+												"profile"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.12"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 26 Jun 2025 15:49:00 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"id\": 1,\n    \"name\": \"Admin User\",\n    \"email\": \"admin@example.com\"\n}"
+								}
+							]
+						},
+						{
+							"name": "update the profile",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "2|qYYZoDGWx3oKsUrrFwhY4YZe06AgHW8O4CpSyHsn45a66be0",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"PH-1\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/admin/profile",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"admin",
+										"profile"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "update the profile",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"name\": \"Admin-1\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/admin/profile",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"admin",
+												"profile"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.12"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 26 Jun 2025 15:49:35 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"id\": 1,\n    \"name\": \"Admin-1\",\n    \"email\": \"admin@example.com\"\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Pharmacist informations",
+					"item": [
+						{
+							"name": "display all user sessions",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "5|gGdgjBfkVex60FYhSvgmVRHvX9JNP49RfFKNL8FFb7fef547",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/admin/user-sessions",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"admin",
+										"user-sessions"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "display all user sessions",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{base_url}}/admin/user-sessions",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"admin",
+												"user-sessions"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.12"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Date",
+											"value": "Mon, 23 Jun 2025 21:30:02 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "[\n    {\n        \"pharmacist_name\": \"Pharmacist User-2\",\n        \"sessions\": [\n            {\n                \"login_time\": \"2025-06-23 21:23:04\",\n                \"logout_time\": \"2025-06-23 21:25:41\"\n            }\n        ]\n    },\n    {\n        \"pharmacist_name\": \"Pharmacist User\",\n        \"sessions\": [\n            {\n                \"login_time\": \"2025-06-23 20:46:11\",\n                \"logout_time\": \"2025-06-23 20:47:19\"\n            }\n        ]\n    }\n]"
+								}
+							]
+						},
+						{
+							"name": "index all pharamcists info's",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "1|HCKQWli0OZ0wZLsUN0CTAFAoqxcLnlwZNiSb2mqv8c32cb54",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/admin/pharmacists",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"admin",
+										"pharmacists"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "index all pharamcists info's",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{base_url}}/admin/pharmacists",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"admin",
+												"pharmacists"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.12"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 26 Jun 2025 14:50:15 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"data\": [\n        {\n            \"id\": 2,\n            \"name\": \"Pharmacist User\",\n            \"email\": \"pharmacist@example.com\",\n            \"hourly_rate\": null,\n            \"hours_worked\": 0,\n            \"salary\": null\n        },\n        {\n            \"id\": 3,\n            \"name\": \"Test Pharma\",\n            \"email\": \"pharma@example.test\",\n            \"hourly_rate\": \"25.50\",\n            \"hours_worked\": 2.5,\n            \"salary\": 63.75\n        }\n    ]\n}"
+								}
+							]
+						},
+						{
+							"name": "store a pharmacist",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "1|HCKQWli0OZ0wZLsUN0CTAFAoqxcLnlwZNiSb2mqv8c32cb54",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\":\"PH-2\",\r\n    \"email\":\"exmple2@gmail.com\",\r\n    \"hourly_rate\":30,\r\n    \"password\":\"password\",\r\n    \"password_confirmation\":\"password\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/admin/pharmacists",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"admin",
+										"pharmacists"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "store a pharmacist",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"name\":\"PH-2\",\r\n    \"email\":\"exmple2@gmail.com\",\r\n    \"hourly_rate\":30,\r\n    \"password\":\"password\",\r\n    \"password_confirmation\":\"password\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/admin/pharmacists",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"admin",
+												"pharmacists"
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.12"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 26 Jun 2025 15:19:40 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"Pharmacist created successfully\",\n    \"data\": {\n        \"name\": \"PH-2\",\n        \"email\": \"exmple2@gmail.com\",\n        \"hourly_rate\": 30,\n        \"updated_at\": \"2025-06-26T15:19:40.000000Z\",\n        \"created_at\": \"2025-06-26T15:19:40.000000Z\",\n        \"id\": 5\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "show a pharmacist info",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "1|HCKQWli0OZ0wZLsUN0CTAFAoqxcLnlwZNiSb2mqv8c32cb54",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\":\"PH-2\",\r\n    \"email\":\"exmple2@gmail.com\",\r\n    \"hourly_rate\":30,\r\n    \"password\":\"password\",\r\n    \"password_confirmation\":\"password\"\r\n}"
+								},
+								"url": {
+									"raw": "{{base_url}}/admin/pharmacists/5",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"admin",
+										"pharmacists",
+										"5"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "show a pharmacist info",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"name\":\"PH-2\",\r\n    \"email\":\"exmple2@gmail.com\",\r\n    \"hourly_rate\":30,\r\n    \"password\":\"password\",\r\n    \"password_confirmation\":\"password\"\r\n}"
+										},
+										"url": {
+											"raw": "{{base_url}}/admin/pharmacists/5",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"admin",
+												"pharmacists",
+												"5"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.12"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 26 Jun 2025 15:21:04 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"data\": {\n        \"id\": 5,\n        \"name\": \"PH-2\",\n        \"email\": \"exmple2@gmail.com\",\n        \"hourly_rate\": \"30.00\",\n        \"hours_worked\": 0,\n        \"salary\": 0\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "update a pharmacist info",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "1|HCKQWli0OZ0wZLsUN0CTAFAoqxcLnlwZNiSb2mqv8c32cb54",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\":\"PH-5\",\r\n    \"email\":\"exmple2@gmail.com\",\r\n    \"hourly_rate\":35,\r\n    \"password\":\"password123\",\r\n    \"password_confirmation\":\"password123\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/admin/pharmacists/5",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"admin",
+										"pharmacists",
+										"5"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "update a pharmacist info",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text",
+												"disabled": true
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"name\":\"PH-5\",\r\n    \"email\":\"exmple2@gmail.com\",\r\n    \"hourly_rate\":35,\r\n    \"password\":\"password123\",\r\n    \"password_confirmation\":\"password123\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/admin/pharmacists/5",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"admin",
+												"pharmacists",
+												"5"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.12"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 26 Jun 2025 15:42:35 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"data\": {\n        \"id\": 5,\n        \"name\": \"PH-5\",\n        \"email\": \"exmple2@gmail.com\",\n        \"hourly_rate\": 35,\n        \"hours_worked\": 0,\n        \"salary\": 0\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "delete a pharmacist",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "1|HCKQWli0OZ0wZLsUN0CTAFAoqxcLnlwZNiSb2mqv8c32cb54",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/admin/pharmacists/5",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"admin",
+										"pharmacists",
+										"5"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "delete a pharmacist",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{base_url}}/admin/pharmacists/5",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"admin",
+												"pharmacists",
+												"5"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.12"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 26 Jun 2025 15:46:57 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"Pharmacist deleted successfully\"\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Logout",
+					"item": [
+						{
+							"name": "logout",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "4|yYBSbSGrJ6limjL8ENXbePIt7xkeGeLYQ9OudscQ2c1a15ee",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/admin/logout",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"admin",
+										"logout"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "logout",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{base_url}}/admin/logout",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"admin",
+												"logout"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.12"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Date",
+											"value": "Mon, 23 Jun 2025 21:41:03 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"LogOut Successfully\"\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Medicines",
+					"item": [
+						{
+							"name": "display all the medicines",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "1|CVAT6jPGlNowVVwh0HuZIwCAFMJ5TIij7499qniS76a6432d",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/admin/medicines",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"admin",
+										"medicines"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "display all the medicines",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{base_url}}/admin/medicines",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"admin",
+												"medicines"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": null,
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.12"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Date",
+											"value": "Sat, 16 Aug 2025 16:51:53 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"data\": [\n        {\n            \"id\": 1,\n            \"name\": \"Paracetamol\",\n            \"barcode\": \"5047571755199\",\n            \"manufacturer\": \"Pfizer\",\n            \"active_ingredient\": \"Acetaminophen\",\n            \"price\": \"2.50\",\n            \"quantity\": 102,\n            \"production_date\": \"2025-05-26\",\n            \"expiry_date\": \"2026-11-26\",\n            \"img_url\": \"http://127.0.0.1:8000/images/default_medicine.jpg\",\n            \"category_name\": \"Uncategorized\"\n        },\n        {\n            \"id\": 2,\n            \"name\": \"Amoxicillin\",\n            \"barcode\": \"9407566781968\",\n            \"manufacturer\": \"GlaxoSmithKline\",\n            \"active_ingredient\": \"Amoxicillin\",\n            \"price\": \"5.00\",\n            \"quantity\": 92,\n            \"production_date\": \"2024-07-26\",\n            \"expiry_date\": \"2025-12-26\",\n            \"img_url\": \"http://127.0.0.1:8000/images/default_medicine.jpg\",\n            \"category_name\": \"Pain Relief\"\n        },\n        {\n            \"id\": 3,\n            \"name\": \"Vitamin C\",\n            \"barcode\": \"2965720197238\",\n            \"manufacturer\": \"Nature’s Way\",\n            \"active_ingredient\": \"Ascorbic Acid\",\n            \"price\": \"1.20\",\n            \"quantity\": 194,\n            \"production_date\": \"2025-03-26\",\n            \"expiry_date\": \"2026-01-26\",\n            \"img_url\": \"http://127.0.0.1:8000/images/default_medicine.jpg\",\n            \"category_name\": \"Antibiotics\"\n        },\n        {\n            \"id\": 4,\n            \"name\": \"Cetirizine\",\n            \"barcode\": \"5782826143769\",\n            \"manufacturer\": \"Zyrtec\",\n            \"active_ingredient\": \"Cetirizine Hydrochloride\",\n            \"price\": \"3.00\",\n            \"quantity\": 50,\n            \"production_date\": \"2024-07-26\",\n            \"expiry_date\": \"2027-04-26\",\n            \"img_url\": \"http://127.0.0.1:8000/images/default_medicine.jpg\",\n            \"category_name\": \"Vitamins\"\n        },\n        {\n            \"id\": 5,\n            \"name\": \"med-5\",\n            \"barcode\": \"6504786193930\",\n            \"manufacturer\": \"x\",\n            \"active_ingredient\": \"Ingredient-5\",\n            \"price\": \"3.00\",\n            \"quantity\": 50,\n            \"production_date\": \"2024-09-26\",\n            \"expiry_date\": \"2026-06-26\",\n            \"img_url\": \"http://127.0.0.1:8000/images/default_medicine.jpg\",\n            \"category_name\": \"Allergy\"\n        },\n        {\n            \"id\": 6,\n            \"name\": \"med-6\",\n            \"barcode\": \"8008605785626\",\n            \"manufacturer\": \"y\",\n            \"active_ingredient\": \"Ingredient-6\",\n            \"price\": \"9.00\",\n            \"quantity\": 50,\n            \"production_date\": \"2025-01-26\",\n            \"expiry_date\": \"2026-07-26\",\n            \"img_url\": \"http://127.0.0.1:8000/images/default_medicine.jpg\",\n            \"category_name\": \"Uncategorized\"\n        },\n        {\n            \"id\": 7,\n            \"name\": \"med-7\",\n            \"barcode\": \"9977311986921\",\n            \"manufacturer\": \"z\",\n            \"active_ingredient\": \"Ingredient-7\",\n            \"price\": \"1.60\",\n            \"quantity\": 50,\n            \"production_date\": \"2025-03-26\",\n            \"expiry_date\": \"2027-05-26\",\n            \"img_url\": \"http://127.0.0.1:8000/images/default_medicine.jpg\",\n            \"category_name\": \"Pain Relief\"\n        },\n        {\n            \"id\": 8,\n            \"name\": \"med-8\",\n            \"barcode\": \"8703926989707\",\n            \"manufacturer\": \"xy\",\n            \"active_ingredient\": \"Ingredient-8\",\n            \"price\": \"7.20\",\n            \"quantity\": 50,\n            \"production_date\": \"2024-12-26\",\n            \"expiry_date\": \"2026-06-26\",\n            \"img_url\": \"http://127.0.0.1:8000/images/default_medicine.jpg\",\n            \"category_name\": \"Antibiotics\"\n        }\n    ]\n}"
+								}
+							]
+						},
+						{
+							"name": "display expired medicines",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "9|4ZB82J1unKPoQdsE52fcePOh5EQryNpW0rbigrdac149bcb1",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/admin/medicines/expired",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"admin",
+										"medicines",
+										"expired"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "display expired medicines",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{base_url}}/admin/medicines/expired",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"admin",
+												"medicines",
+												"expired"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": null,
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.12"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Date",
+											"value": "Sat, 16 Aug 2025 16:54:16 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"Expired medicines retrieved successfully\",\n    \"data\": [\n        {\n            \"id\": 9,\n            \"name\": \"Expired Medicine\",\n            \"barcode\": \"EXPIRED123\",\n            \"manufacturer\": \"PharmaCorp\",\n            \"active_ingredient\": \"OldSubstance\",\n            \"price\": \"10.00\",\n            \"quantity\": 20,\n            \"production_date\": \"2023-06-29\",\n            \"expiry_date\": \"2025-06-19\",\n            \"img_url\": \"http://127.0.0.1:8000/images/default_medicine.jpg\",\n            \"category_name\": \"Pain Relief\"\n        }\n    ]\n}"
+								}
+							]
+						},
+						{
+							"name": "display out-of-stock medicines",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "9|4ZB82J1unKPoQdsE52fcePOh5EQryNpW0rbigrdac149bcb1",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/admin/medicines/outOfStock",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"admin",
+										"medicines",
+										"outOfStock"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "display out-of-stock medicines",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{base_url}}/admin/medicines/outOfStock",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"admin",
+												"medicines",
+												"outOfStock"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": null,
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.12"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Date",
+											"value": "Sat, 16 Aug 2025 16:55:18 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"Out-of-stock medicines retrieved successfully.\",\n    \"data\": [\n        {\n            \"id\": 10,\n            \"name\": \"Out of Stock Medicine\",\n            \"barcode\": \"OUTSTOCK123\",\n            \"manufacturer\": \"EmptyMeds Inc.\",\n            \"active_ingredient\": \"NoneLeft\",\n            \"price\": \"5.50\",\n            \"quantity\": 0,\n            \"production_date\": \"2024-12-29\",\n            \"expiry_date\": \"2026-06-29\",\n            \"img_url\": \"http://127.0.0.1:8000/images/default_medicine.jpg\",\n            \"category_name\": \"Pain Relief\"\n        }\n    ]\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Performance Analysis",
+					"item": [
+						{
+							"name": "performance analysis",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "1|EeBStaJ3RCBnqfxCyLK0zGIL0oDqjg9aMOrAd8pp0e057da7",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/admin/performanceAnalysis",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"admin",
+										"performanceAnalysis"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "performance analysis",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{base_url}}/admin/performanceAnalysis",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"admin",
+												"performanceAnalysis"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": null,
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.12"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Date",
+											"value": "Mon, 18 Aug 2025 10:38:02 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"supplier_payments\": [\n        {\n            \"id\": 1,\n            \"name_supplier\": \"Pfizer\",\n            \"payment_supplier\": 1203\n        },\n        {\n            \"id\": 2,\n            \"name_supplier\": \"Novartis\",\n            \"payment_supplier\": 2193\n        },\n        {\n            \"id\": 3,\n            \"name_supplier\": \"Sanofi\",\n            \"payment_supplier\": 2500\n        }\n    ],\n    \"sales_summary\": {\n        \"today\": 279.7,\n        \"week\": 311.5,\n        \"month\": 4245.3,\n        \"month_name\": \"August\"\n    },\n    \"pharmacists_work_hours\": {\n        \"individual\": [\n            {\n                \"id\": 2,\n                \"name\": \"Pharmacist User\",\n                \"total_hours\": 44\n            },\n            {\n                \"id\": 3,\n                \"name\": \"Pharmacist John\",\n                \"total_hours\": 32\n            },\n            {\n                \"id\": 4,\n                \"name\": \"Pharmacist Emily\",\n                \"total_hours\": 35\n            }\n        ],\n        \"total_hours\": 111\n    },\n    \"performance_analysis\": {\n        \"sales_month\": 4245.3,\n        \"supplier_orders_cost\": 975.9,\n        \"total_paid_to_suppliers\": 5896,\n        \"suppliers_total_balance\": 304.5,\n        \"total_pharmacist_salaries\": 2954.25,\n        \"profit_estimate\": 315.15\n    }\n}"
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Pharmacist",
+			"item": [
+				{
+					"name": "Supplier",
+					"item": [
+						{
+							"name": " store a supplier order",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "1|JJ7fi8hvvOEUqEmKsuFElPB77vWNAXFOCVqzUoEke2cad512",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"supplier_name\": \"Novartis\",\r\n    \"items\": [\r\n        {\r\n            \"name\": \"Amoxicillin\",\r\n            \"quantity\": 12\r\n        },\r\n        {\r\n            \"name\": \"Paracetamol\",\r\n            \"quantity\": 8\r\n        }\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/pharmacist/supplier-orders",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"pharmacist",
+										"supplier-orders"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "store a supplier order",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"supplier_name\": \"Novartis\",\r\n    \"items\": [\r\n        {\r\n            \"name\": \"Amoxicillin\",\r\n            \"quantity\": 12\r\n        },\r\n        {\r\n            \"name\": \"Paracetamol\",\r\n            \"quantity\": 8\r\n        }\r\n    ]\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/pharmacist/supplier-orders",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"pharmacist",
+												"supplier-orders"
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.12"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Date",
+											"value": "Fri, 27 Jun 2025 13:53:24 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"The order was created successfully.\",\n    \"order_id\": 1,\n    \"total_price\": 80\n}"
+								}
+							]
+						},
+						{
+							"name": "display all the orders",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "1|JJ7fi8hvvOEUqEmKsuFElPB77vWNAXFOCVqzUoEke2cad512",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/pharmacist/supplier-orders",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"pharmacist",
+										"supplier-orders"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "display all the orders",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{base_url}}/pharmacist/supplier-orders",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"pharmacist",
+												"supplier-orders"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.12"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Date",
+											"value": "Fri, 27 Jun 2025 13:54:05 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"data\": [\n        {\n            \"id\": 1,\n            \"supplier_name\": \"Novartis\",\n            \"pharmacist_name\": \"Pharmacist User\",\n            \"order_date\": \"2025-06-27\",\n            \"total_price\": \"80.00\"\n        }\n    ]\n}"
+								}
+							]
+						},
+						{
+							"name": "show an order",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "1|JJ7fi8hvvOEUqEmKsuFElPB77vWNAXFOCVqzUoEke2cad512",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/pharmacist/supplier-orders/1",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"pharmacist",
+										"supplier-orders",
+										"1"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "show an order",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{base_url}}/pharmacist/supplier-orders/1",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"pharmacist",
+												"supplier-orders",
+												"1"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.12"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Date",
+											"value": "Fri, 27 Jun 2025 13:54:42 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"data\": [\n        {\n            \"id\": 1,\n            \"medicine_name\": \"Amoxicillin\",\n            \"quantity\": 12,\n            \"unit_price\": \"5.00\",\n            \"subtotal\": 60\n        },\n        {\n            \"id\": 2,\n            \"medicine_name\": \"Paracetamol\",\n            \"quantity\": 8,\n            \"unit_price\": \"2.50\",\n            \"subtotal\": 20\n        }\n    ]\n}"
+								}
+							]
+						},
+						{
+							"name": "display all the suppliers",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "4|yYBSbSGrJ6limjL8ENXbePIt7xkeGeLYQ9OudscQ2c1a15ee",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/pharmacist/suppliers",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"pharmacist",
+										"suppliers"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "display all the suppliers",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{base_url}}/pharmacist/suppliers",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"pharmacist",
+												"suppliers"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.12"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Date",
+											"value": "Fri, 27 Jun 2025 13:55:14 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"data\": [\n        {\n            \"id\": 1,\n            \"name\": \"Pfizer\",\n            \"phone\": \"1234567890\",\n            \"email\": \"contact@pfizer.com\",\n            \"address\": \"New York, USA\",\n            \"balance\": \"1500.00\"\n        },\n        {\n            \"id\": 2,\n            \"name\": \"Novartis\",\n            \"phone\": \"9876543210\",\n            \"email\": \"support@novartis.com\",\n            \"address\": \"Basel, Switzerland\",\n            \"balance\": \"2280.50\"\n        },\n        {\n            \"id\": 3,\n            \"name\": \"Sanofi\",\n            \"phone\": \"1122334455\",\n            \"email\": \"info@sanofi.com\",\n            \"address\": \"Paris, France\",\n            \"balance\": \"500.00\"\n        }\n    ]\n}"
+								}
+							]
+						},
+						{
+							"name": "pay a supplier",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "7|6ItittRHow00GkoxU6PNuhQjxDKPXBwXwFWdw0Tte35a56e3",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"amount\":400\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/pharmacist/suppliers/2/payments",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"pharmacist",
+										"suppliers",
+										"2",
+										"payments"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "pay a supplier",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"amount\":400\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/pharmacist/suppliers/2/payments",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"pharmacist",
+												"suppliers",
+												"2",
+												"payments"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.12"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 22 Jun 2025 20:46:39 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"Supplier payment created successfully.\"\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Medicines",
+					"item": [
+						{
+							"name": "show a medicine",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "1|9uSuB8x2ksxie6wba4m9XuScGtUR0VjJU9hR9a3v37588a36",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/pharmacist/medicines/2",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"pharmacist",
+										"medicines",
+										"2"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "show a medicine",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{base_url}}/pharmacist/medicines/2",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"pharmacist",
+												"medicines",
+												"2"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.12"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 22 Jun 2025 20:29:39 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"medicine\": {\n        \"id\": 2,\n        \"name\": \"Amoxicillin\",\n        \"barcode\": \"8755665119679\",\n        \"manufacturer\": \"GlaxoSmithKline\",\n        \"active_ingredient\": \"Amoxicillin\",\n        \"price\": \"5.00\",\n        \"quantity\": 80,\n        \"production_date\": \"2024-09-21\",\n        \"expiry_date\": \"2027-03-21\",\n        \"img_url\": \"http://127.0.0.1:8000/images/default_medicine.jpg\",\n        \"category_name\": \"Pain Relief\"\n    },\n    \"similar_medicines\": [\n        {\n            \"id\": 9,\n            \"name\": \"Amoxicillin Extra 1\",\n            \"barcode\": \"12432251\",\n            \"manufacturer\": \"Manufacturer 1\",\n            \"active_ingredient\": \"Amoxicillin\",\n            \"price\": \"4.70\",\n            \"quantity\": 85,\n            \"production_date\": \"2025-05-21\",\n            \"expiry_date\": \"2026-07-21\",\n            \"img_url\": \"http://127.0.0.1:8000/images/default_medicine.jpg\",\n            \"category_name\": \"Pain Relief\"\n        },\n        {\n            \"id\": 10,\n            \"name\": \"Amoxicillin Extra 2\",\n            \"barcode\": \"12432252\",\n            \"manufacturer\": \"Manufacturer 2\",\n            \"active_ingredient\": \"Amoxicillin\",\n            \"price\": \"4.90\",\n            \"quantity\": 90,\n            \"production_date\": \"2025-04-21\",\n            \"expiry_date\": \"2026-08-21\",\n            \"img_url\": \"http://127.0.0.1:8000/images/default_medicine.jpg\",\n            \"category_name\": \"Pain Relief\"\n        },\n        {\n            \"id\": 11,\n            \"name\": \"Amoxicillin Extra 3\",\n            \"barcode\": \"12432253\",\n            \"manufacturer\": \"Manufacturer 3\",\n            \"active_ingredient\": \"Amoxicillin\",\n            \"price\": \"5.10\",\n            \"quantity\": 95,\n            \"production_date\": \"2025-03-21\",\n            \"expiry_date\": \"2026-09-21\",\n            \"img_url\": \"http://127.0.0.1:8000/images/default_medicine.jpg\",\n            \"category_name\": \"Pain Relief\"\n        },\n        {\n            \"id\": 12,\n            \"name\": \"Amoxicillin Extra 4\",\n            \"barcode\": \"82372394234\",\n            \"manufacturer\": \"Manufacturer 4\",\n            \"active_ingredient\": \"Amoxicillin\",\n            \"price\": \"5.30\",\n            \"quantity\": 100,\n            \"production_date\": \"2025-02-21\",\n            \"expiry_date\": \"2026-10-21\",\n            \"img_url\": \"http://127.0.0.1:8000/images/default_medicine.jpg\",\n            \"category_name\": \"Pain Relief\"\n        },\n        {\n            \"id\": 13,\n            \"name\": \"Amoxicillin Extra 5\",\n            \"barcode\": \"12432255\",\n            \"manufacturer\": \"Manufacturer 5\",\n            \"active_ingredient\": \"Amoxicillin\",\n            \"price\": \"5.50\",\n            \"quantity\": 105,\n            \"production_date\": \"2025-01-21\",\n            \"expiry_date\": \"2026-11-21\",\n            \"img_url\": \"http://127.0.0.1:8000/images/default_medicine.jpg\",\n            \"category_name\": \"Pain Relief\"\n        },\n        {\n            \"id\": 15,\n            \"name\": \"Amoxicillin-4\",\n            \"barcode\": \"88057987345\",\n            \"manufacturer\": \"GlaxoSmithKline\",\n            \"active_ingredient\": \"Amoxicillin\",\n            \"price\": \"5.00\",\n            \"quantity\": 80,\n            \"production_date\": \"2024-05-15\",\n            \"expiry_date\": \"2026-05-15\",\n            \"img_url\": \"http://127.0.0.1:8000/images/default_medicine.jpg\",\n            \"category_name\": \"Antibiotics\"\n        }\n    ]\n}"
+								}
+							]
+						},
+						{
+							"name": "medicines by category",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "1|r70p2FpJfCtQ3nNNpbsrxiioadWX36OQDaoz6Dpwcc42abe1",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/pharmacist/categories/1/medicines",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"pharmacist",
+										"categories",
+										"1",
+										"medicines"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "medicines by category",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{base_url}}/pharmacist/categories/2/medicines",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"pharmacist",
+												"categories",
+												"2",
+												"medicines"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.12"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 22 Jun 2025 20:30:28 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"data\": [\n        {\n            \"id\": 2,\n            \"name\": \"Amoxicillin\",\n            \"barcode\": \"8755665119679\",\n            \"manufacturer\": \"GlaxoSmithKline\",\n            \"active_ingredient\": \"Amoxicillin\",\n            \"price\": \"5.00\",\n            \"quantity\": 80,\n            \"production_date\": \"2024-09-21\",\n            \"expiry_date\": \"2027-03-21\",\n            \"img_url\": \"http://127.0.0.1:8000/images/default_medicine.jpg\",\n            \"category_name\": \"Pain Relief\"\n        },\n        {\n            \"id\": 7,\n            \"name\": \"med-7\",\n            \"barcode\": \"1787771348519\",\n            \"manufacturer\": \"z\",\n            \"active_ingredient\": \"Ingredient-7\",\n            \"price\": \"1.60\",\n            \"quantity\": 50,\n            \"production_date\": \"2025-02-21\",\n            \"expiry_date\": \"2026-12-21\",\n            \"img_url\": \"http://127.0.0.1:8000/images/default_medicine.jpg\",\n            \"category_name\": \"Pain Relief\"\n        },\n        {\n            \"id\": 9,\n            \"name\": \"Amoxicillin Extra 1\",\n            \"barcode\": \"12432251\",\n            \"manufacturer\": \"Manufacturer 1\",\n            \"active_ingredient\": \"Amoxicillin\",\n            \"price\": \"4.70\",\n            \"quantity\": 85,\n            \"production_date\": \"2025-05-21\",\n            \"expiry_date\": \"2026-07-21\",\n            \"img_url\": \"http://127.0.0.1:8000/images/default_medicine.jpg\",\n            \"category_name\": \"Pain Relief\"\n        },\n        {\n            \"id\": 10,\n            \"name\": \"Amoxicillin Extra 2\",\n            \"barcode\": \"12432252\",\n            \"manufacturer\": \"Manufacturer 2\",\n            \"active_ingredient\": \"Amoxicillin\",\n            \"price\": \"4.90\",\n            \"quantity\": 90,\n            \"production_date\": \"2025-04-21\",\n            \"expiry_date\": \"2026-08-21\",\n            \"img_url\": \"http://127.0.0.1:8000/images/default_medicine.jpg\",\n            \"category_name\": \"Pain Relief\"\n        },\n        {\n            \"id\": 11,\n            \"name\": \"Amoxicillin Extra 3\",\n            \"barcode\": \"12432253\",\n            \"manufacturer\": \"Manufacturer 3\",\n            \"active_ingredient\": \"Amoxicillin\",\n            \"price\": \"5.10\",\n            \"quantity\": 95,\n            \"production_date\": \"2025-03-21\",\n            \"expiry_date\": \"2026-09-21\",\n            \"img_url\": \"http://127.0.0.1:8000/images/default_medicine.jpg\",\n            \"category_name\": \"Pain Relief\"\n        },\n        {\n            \"id\": 12,\n            \"name\": \"Amoxicillin Extra 4\",\n            \"barcode\": \"82372394234\",\n            \"manufacturer\": \"Manufacturer 4\",\n            \"active_ingredient\": \"Amoxicillin\",\n            \"price\": \"5.30\",\n            \"quantity\": 100,\n            \"production_date\": \"2025-02-21\",\n            \"expiry_date\": \"2026-10-21\",\n            \"img_url\": \"http://127.0.0.1:8000/images/default_medicine.jpg\",\n            \"category_name\": \"Pain Relief\"\n        },\n        {\n            \"id\": 13,\n            \"name\": \"Amoxicillin Extra 5\",\n            \"barcode\": \"12432255\",\n            \"manufacturer\": \"Manufacturer 5\",\n            \"active_ingredient\": \"Amoxicillin\",\n            \"price\": \"5.50\",\n            \"quantity\": 105,\n            \"production_date\": \"2025-01-21\",\n            \"expiry_date\": \"2026-11-21\",\n            \"img_url\": \"http://127.0.0.1:8000/images/default_medicine.jpg\",\n            \"category_name\": \"Pain Relief\"\n        }\n    ]\n}"
+								}
+							]
+						},
+						{
+							"name": "delete a medicine",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "1|8nIWKCI4VIj770PAirLABb5bu0YhAjcWtL7j2sit7ebab9ea",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/admin/medicines/5",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"admin",
+										"medicines",
+										"5"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "delete a medicine",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/pharmacist/medicines/12",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"pharmacist",
+												"medicines",
+												"12"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.12"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 22 Jun 2025 20:30:57 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"Medicine deleted successfully\"\n}"
+								}
+							]
+						},
+						{
+							"name": "update a medicine",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "1|9uSuB8x2ksxie6wba4m9XuScGtUR0VjJU9hR9a3v37588a36",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"quantity\":100,\r\n    \"barcode\":\"82372394234\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/pharmacist/medicines/12",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"pharmacist",
+										"medicines",
+										"12"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "update a medicine",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"quantity\":120,\r\n    \"barcode\":\"82372394239\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/pharmacist/medicines/11",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"pharmacist",
+												"medicines",
+												"11"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.12"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 22 Jun 2025 20:32:49 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"data\": {\n        \"id\": 11,\n        \"name\": \"Amoxicillin Extra 3\",\n        \"barcode\": \"82372394239\",\n        \"manufacturer\": \"Manufacturer 3\",\n        \"active_ingredient\": \"Amoxicillin\",\n        \"price\": \"5.10\",\n        \"quantity\": 120,\n        \"production_date\": \"2025-03-21\",\n        \"expiry_date\": \"2026-09-21\",\n        \"img_url\": \"http://127.0.0.1:8000/images/default_medicine.jpg\",\n        \"category_name\": \"Pain Relief\"\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "store a medicine/'s",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "1|9uSuB8x2ksxie6wba4m9XuScGtUR0VjJU9hR9a3v37588a36",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "[\r\n    {\r\n        \"name\": \"Paracetamol-2\",\r\n        \"barcode\": \"73453457987345\",\r\n        \"manufacturer\": \"Pfizer\",\r\n        \"active_ingredient\": \"Acetaminophen\",\r\n        \"price\": 2.50,\r\n        \"quantity\": 100,\r\n        \"production_date\": \"2024-06-01\",\r\n        \"expiry_date\": \"2026-06-01\",\r\n        \"img_url\": \"/images/default_medicine.png\",\r\n        \"category_name\": \"Antibiotics\"\r\n    },\r\n    {\r\n        \"name\": \"Amoxicillin-4\",\r\n        \"barcode\": \"88057987345\",\r\n        \"manufacturer\": \"GlaxoSmithKline\",\r\n        \"active_ingredient\": \"Amoxicillin\",\r\n        \"price\": 5.00,\r\n        \"quantity\": 80,\r\n        \"production_date\": \"2024-05-15\",\r\n        \"expiry_date\": \"2026-05-15\",\r\n        \"category_name\": \"Antibiotics\"\r\n    }\r\n]",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/pharmacist/medicines",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"pharmacist",
+										"medicines"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "store a medicine/'s",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "[\r\n    {\r\n        \"name\": \"Paracetamol-3\",\r\n        \"barcode\": \"73413487987345\",\r\n        \"manufacturer\": \"Pfizer\",\r\n        \"active_ingredient\": \"Acetaminophen\",\r\n        \"price\": 2.50,\r\n        \"quantity\": 100,\r\n        \"production_date\": \"2024-06-01\",\r\n        \"expiry_date\": \"2026-06-01\",\r\n        \"category_name\": \"Antibiotics\"\r\n    },\r\n    {\r\n        \"name\": \"Amoxicillin-5\",\r\n        \"barcode\": \"88027787345\",\r\n        \"manufacturer\": \"GlaxoSmithKline\",\r\n        \"active_ingredient\": \"Amoxicillin\",\r\n        \"price\": 5.00,\r\n        \"quantity\": 80,\r\n        \"production_date\": \"2024-05-15\",\r\n        \"expiry_date\": \"2026-05-15\",\r\n        \"category_name\": \"Antibiotics\"\r\n    }\r\n]",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/pharmacist/medicines",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"pharmacist",
+												"medicines"
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.12"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 22 Jun 2025 20:34:07 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"Medications created successfully\",\n    \"data\": [\n        {\n            \"id\": 17,\n            \"name\": \"Paracetamol-3\",\n            \"barcode\": \"73413487987345\",\n            \"manufacturer\": \"Pfizer\",\n            \"active_ingredient\": \"Acetaminophen\",\n            \"price\": 2.5,\n            \"quantity\": 100,\n            \"production_date\": \"2024-06-01\",\n            \"expiry_date\": \"2026-06-01\",\n            \"img_url\": \"http://127.0.0.1:8000/images/default_medicine.jpg\",\n            \"category_name\": \"Antibiotics\"\n        },\n        {\n            \"id\": 18,\n            \"name\": \"Amoxicillin-5\",\n            \"barcode\": \"88027787345\",\n            \"manufacturer\": \"GlaxoSmithKline\",\n            \"active_ingredient\": \"Amoxicillin\",\n            \"price\": 5,\n            \"quantity\": 80,\n            \"production_date\": \"2024-05-15\",\n            \"expiry_date\": \"2026-05-15\",\n            \"img_url\": \"http://127.0.0.1:8000/images/default_medicine.jpg\",\n            \"category_name\": \"Antibiotics\"\n        }\n    ]\n}"
+								}
+							]
+						},
+						{
+							"name": "display all the medicines",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "1|9uSuB8x2ksxie6wba4m9XuScGtUR0VjJU9hR9a3v37588a36",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "{{base_url}}/pharmacist/medicines",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"pharmacist",
+										"medicines"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "display all the medicines",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{base_url}}/pharmacist/medicines",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"pharmacist",
+												"medicines"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.12"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 22 Jun 2025 20:35:31 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"data\": [\n        {\n            \"id\": 1,\n            \"name\": \"Paracetamol\",\n            \"barcode\": \"5902425703964\",\n            \"manufacturer\": \"Pfizer\",\n            \"active_ingredient\": \"Acetaminophen\",\n            \"price\": \"2.50\",\n            \"quantity\": 100,\n            \"production_date\": \"2025-01-21\",\n            \"expiry_date\": \"2027-01-21\",\n            \"img_url\": \"http://127.0.0.1:8000/images/default_medicine.jpg\",\n            \"category_name\": \"Uncategorized\"\n        },\n        {\n            \"id\": 2,\n            \"name\": \"Amoxicillin\",\n            \"barcode\": \"8755665119679\",\n            \"manufacturer\": \"GlaxoSmithKline\",\n            \"active_ingredient\": \"Amoxicillin\",\n            \"price\": \"5.00\",\n            \"quantity\": 80,\n            \"production_date\": \"2024-09-21\",\n            \"expiry_date\": \"2027-03-21\",\n            \"img_url\": \"http://127.0.0.1:8000/images/default_medicine.jpg\",\n            \"category_name\": \"Pain Relief\"\n        },\n        {\n            \"id\": 3,\n            \"name\": \"Vitamin C\",\n            \"barcode\": \"7297096328713\",\n            \"manufacturer\": \"Nature’s Way\",\n            \"active_ingredient\": \"Ascorbic Acid\",\n            \"price\": \"1.20\",\n            \"quantity\": 200,\n            \"production_date\": \"2024-11-21\",\n            \"expiry_date\": \"2026-10-21\",\n            \"img_url\": \"http://127.0.0.1:8000/images/default_medicine.jpg\",\n            \"category_name\": \"Antibiotics\"\n        },\n        {\n            \"id\": 4,\n            \"name\": \"Cetirizine\",\n            \"barcode\": \"8714933353959\",\n            \"manufacturer\": \"Zyrtec\",\n            \"active_ingredient\": \"Cetirizine Hydrochloride\",\n            \"price\": \"3.00\",\n            \"quantity\": 50,\n            \"production_date\": \"2024-09-21\",\n            \"expiry_date\": \"2026-01-21\",\n            \"img_url\": \"http://127.0.0.1:8000/images/default_medicine.jpg\",\n            \"category_name\": \"Vitamins\"\n        },\n        {\n            \"id\": 5,\n            \"name\": \"med-5\",\n            \"barcode\": \"6748642287855\",\n            \"manufacturer\": \"x\",\n            \"active_ingredient\": \"Ingredient-5\",\n            \"price\": \"3.00\",\n            \"quantity\": 50,\n            \"production_date\": \"2024-08-21\",\n            \"expiry_date\": \"2026-08-21\",\n            \"img_url\": \"http://127.0.0.1:8000/images/default_medicine.jpg\",\n            \"category_name\": \"Allergy\"\n        },\n        {\n            \"id\": 6,\n            \"name\": \"med-6\",\n            \"barcode\": \"0016489058342\",\n            \"manufacturer\": \"y\",\n            \"active_ingredient\": \"Ingredient-6\",\n            \"price\": \"9.00\",\n            \"quantity\": 50,\n            \"production_date\": \"2024-07-21\",\n            \"expiry_date\": \"2026-03-21\",\n            \"img_url\": \"http://127.0.0.1:8000/images/default_medicine.jpg\",\n            \"category_name\": \"Uncategorized\"\n        },\n        {\n            \"id\": 7,\n            \"name\": \"med-7\",\n            \"barcode\": \"1787771348519\",\n            \"manufacturer\": \"z\",\n            \"active_ingredient\": \"Ingredient-7\",\n            \"price\": \"1.60\",\n            \"quantity\": 50,\n            \"production_date\": \"2025-02-21\",\n            \"expiry_date\": \"2026-12-21\",\n            \"img_url\": \"http://127.0.0.1:8000/images/default_medicine.jpg\",\n            \"category_name\": \"Pain Relief\"\n        },\n        {\n            \"id\": 8,\n            \"name\": \"med-8\",\n            \"barcode\": \"3690356579902\",\n            \"manufacturer\": \"xy\",\n            \"active_ingredient\": \"Ingredient-8\",\n            \"price\": \"7.20\",\n            \"quantity\": 50,\n            \"production_date\": \"2025-05-21\",\n            \"expiry_date\": \"2026-03-21\",\n            \"img_url\": \"http://127.0.0.1:8000/images/default_medicine.jpg\",\n            \"category_name\": \"Antibiotics\"\n        },\n        {\n            \"id\": 9,\n            \"name\": \"Amoxicillin Extra 1\",\n            \"barcode\": \"12432251\",\n            \"manufacturer\": \"Manufacturer 1\",\n            \"active_ingredient\": \"Amoxicillin\",\n            \"price\": \"4.70\",\n            \"quantity\": 85,\n            \"production_date\": \"2025-05-21\",\n            \"expiry_date\": \"2026-07-21\",\n            \"img_url\": \"http://127.0.0.1:8000/images/default_medicine.jpg\",\n            \"category_name\": \"Pain Relief\"\n        },\n        {\n            \"id\": 10,\n            \"name\": \"Amoxicillin Extra 2\",\n            \"barcode\": \"12432252\",\n            \"manufacturer\": \"Manufacturer 2\",\n            \"active_ingredient\": \"Amoxicillin\",\n            \"price\": \"4.90\",\n            \"quantity\": 90,\n            \"production_date\": \"2025-04-21\",\n            \"expiry_date\": \"2026-08-21\",\n            \"img_url\": \"http://127.0.0.1:8000/images/default_medicine.jpg\",\n            \"category_name\": \"Pain Relief\"\n        },\n        {\n            \"id\": 11,\n            \"name\": \"Amoxicillin Extra 3\",\n            \"barcode\": \"82372394239\",\n            \"manufacturer\": \"Manufacturer 3\",\n            \"active_ingredient\": \"Amoxicillin\",\n            \"price\": \"5.10\",\n            \"quantity\": 120,\n            \"production_date\": \"2025-03-21\",\n            \"expiry_date\": \"2026-09-21\",\n            \"img_url\": \"http://127.0.0.1:8000/images/default_medicine.jpg\",\n            \"category_name\": \"Pain Relief\"\n        },\n        {\n            \"id\": 13,\n            \"name\": \"Amoxicillin Extra 5\",\n            \"barcode\": \"12432255\",\n            \"manufacturer\": \"Manufacturer 5\",\n            \"active_ingredient\": \"Amoxicillin\",\n            \"price\": \"5.50\",\n            \"quantity\": 105,\n            \"production_date\": \"2025-01-21\",\n            \"expiry_date\": \"2026-11-21\",\n            \"img_url\": \"http://127.0.0.1:8000/images/default_medicine.jpg\",\n            \"category_name\": \"Pain Relief\"\n        },\n        {\n            \"id\": 14,\n            \"name\": \"Paracetamol-2\",\n            \"barcode\": \"73453457987345\",\n            \"manufacturer\": \"Pfizer\",\n            \"active_ingredient\": \"Acetaminophen\",\n            \"price\": \"2.50\",\n            \"quantity\": 100,\n            \"production_date\": \"2024-06-01\",\n            \"expiry_date\": \"2026-06-01\",\n            \"img_url\": \"http://127.0.0.1:8000/images/default_medicine.jpg\",\n            \"category_name\": \"Antibiotics\"\n        },\n        {\n            \"id\": 15,\n            \"name\": \"Amoxicillin-4\",\n            \"barcode\": \"88057987345\",\n            \"manufacturer\": \"GlaxoSmithKline\",\n            \"active_ingredient\": \"Amoxicillin\",\n            \"price\": \"5.00\",\n            \"quantity\": 80,\n            \"production_date\": \"2024-05-15\",\n            \"expiry_date\": \"2026-05-15\",\n            \"img_url\": \"http://127.0.0.1:8000/images/default_medicine.jpg\",\n            \"category_name\": \"Antibiotics\"\n        },\n        {\n            \"id\": 16,\n            \"name\": \"Paracetamol-3\",\n            \"barcode\": \"73453487987345\",\n            \"manufacturer\": \"Pfizer\",\n            \"active_ingredient\": \"Acetaminophen\",\n            \"price\": \"2.50\",\n            \"quantity\": 100,\n            \"production_date\": \"2024-06-01\",\n            \"expiry_date\": \"2026-06-01\",\n            \"img_url\": \"http://127.0.0.1:8000/images/default_medicine.jpg\",\n            \"category_name\": \"Antibiotics\"\n        },\n        {\n            \"id\": 17,\n            \"name\": \"Paracetamol-3\",\n            \"barcode\": \"73413487987345\",\n            \"manufacturer\": \"Pfizer\",\n            \"active_ingredient\": \"Acetaminophen\",\n            \"price\": \"2.50\",\n            \"quantity\": 100,\n            \"production_date\": \"2024-06-01\",\n            \"expiry_date\": \"2026-06-01\",\n            \"img_url\": \"http://127.0.0.1:8000/images/default_medicine.jpg\",\n            \"category_name\": \"Antibiotics\"\n        },\n        {\n            \"id\": 18,\n            \"name\": \"Amoxicillin-5\",\n            \"barcode\": \"88027787345\",\n            \"manufacturer\": \"GlaxoSmithKline\",\n            \"active_ingredient\": \"Amoxicillin\",\n            \"price\": \"5.00\",\n            \"quantity\": 80,\n            \"production_date\": \"2024-05-15\",\n            \"expiry_date\": \"2026-05-15\",\n            \"img_url\": \"http://127.0.0.1:8000/images/default_medicine.jpg\",\n            \"category_name\": \"Antibiotics\"\n        }\n    ]\n}"
+								}
+							]
+						},
+						{
+							"name": "search",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "1|9uSuB8x2ksxie6wba4m9XuScGtUR0VjJU9hR9a3v37588a36",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/pharmacist/medicines/search?query=paracetamol&min_price=2&max_price=5&max_quantity=50",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"pharmacist",
+										"medicines",
+										"search"
+									],
+									"query": [
+										{
+											"key": "query",
+											"value": "paracetamol"
+										},
+										{
+											"key": "min_price",
+											"value": "2"
+										},
+										{
+											"key": "max_price",
+											"value": "5"
+										},
+										{
+											"key": "max_quantity",
+											"value": "50"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "search",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{base_url}}/pharmacist/medicines/search?query=paracetamol&min_price=2&max_price=5",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"pharmacist",
+												"medicines",
+												"search"
+											],
+											"query": [
+												{
+													"key": "query",
+													"value": "paracetamol"
+												},
+												{
+													"key": "min_price",
+													"value": "2"
+												},
+												{
+													"key": "max_price",
+													"value": "5"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.12"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 22 Jun 2025 20:48:55 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"Success\",\n    \"data\": [\n        {\n            \"id\": 1,\n            \"name\": \"Paracetamol\",\n            \"barcode\": \"5902425703964\",\n            \"manufacturer\": \"Pfizer\",\n            \"active_ingredient\": \"Acetaminophen\",\n            \"price\": \"2.50\",\n            \"quantity\": 108,\n            \"production_date\": \"2025-01-21\",\n            \"expiry_date\": \"2027-01-21\",\n            \"img_url\": \"http://127.0.0.1:8000/images/default_medicine.jpg\",\n            \"category_name\": \"Uncategorized\"\n        },\n        {\n            \"id\": 14,\n            \"name\": \"Paracetamol-2\",\n            \"barcode\": \"73453457987345\",\n            \"manufacturer\": \"Pfizer\",\n            \"active_ingredient\": \"Acetaminophen\",\n            \"price\": \"2.50\",\n            \"quantity\": 100,\n            \"production_date\": \"2024-06-01\",\n            \"expiry_date\": \"2026-06-01\",\n            \"img_url\": \"http://127.0.0.1:8000/images/default_medicine.jpg\",\n            \"category_name\": \"Uncategorized\"\n        },\n        {\n            \"id\": 16,\n            \"name\": \"Paracetamol-3\",\n            \"barcode\": \"73453487987345\",\n            \"manufacturer\": \"Pfizer\",\n            \"active_ingredient\": \"Acetaminophen\",\n            \"price\": \"2.50\",\n            \"quantity\": 100,\n            \"production_date\": \"2024-06-01\",\n            \"expiry_date\": \"2026-06-01\",\n            \"img_url\": \"http://127.0.0.1:8000/images/default_medicine.jpg\",\n            \"category_name\": \"Uncategorized\"\n        },\n        {\n            \"id\": 17,\n            \"name\": \"Paracetamol-3\",\n            \"barcode\": \"73413487987345\",\n            \"manufacturer\": \"Pfizer\",\n            \"active_ingredient\": \"Acetaminophen\",\n            \"price\": \"2.50\",\n            \"quantity\": 100,\n            \"production_date\": \"2024-06-01\",\n            \"expiry_date\": \"2026-06-01\",\n            \"img_url\": \"http://127.0.0.1:8000/images/default_medicine.jpg\",\n            \"category_name\": \"Uncategorized\"\n        }\n    ]\n}"
+								}
+							]
+						},
+						{
+							"name": "display expired medicines",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "6|3HCcT3qtOVhyrChJTxyd0CsATRtyvTEFUjdbbawB1884bfa5",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/pharmacist/medicines/expired",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"pharmacist",
+										"medicines",
+										"expired"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "display expired medicines",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{base_url}}/pharmacist/medicines/expired",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"pharmacist",
+												"medicines",
+												"expired"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.12"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 29 Jun 2025 22:55:02 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"Expired medicines retrieved successfully\",\n    \"data\": [\n        {\n            \"id\": 9,\n            \"name\": \"Expired Medicine\",\n            \"barcode\": \"EXPIRED123\",\n            \"manufacturer\": \"PharmaCorp\",\n            \"active_ingredient\": \"OldSubstance\",\n            \"price\": \"10.00\",\n            \"quantity\": 20,\n            \"production_date\": \"2023-06-29\",\n            \"expiry_date\": \"2025-06-19\",\n            \"img_url\": \"http://127.0.0.1:8000/images/default_medicine.jpg\",\n            \"category_name\": \"Pain Relief\"\n        }\n    ]\n}"
+								}
+							]
+						},
+						{
+							"name": "display out-of-stock medicines",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "6|3HCcT3qtOVhyrChJTxyd0CsATRtyvTEFUjdbbawB1884bfa5",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/pharmacist/medicines/outOfStock",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"pharmacist",
+										"medicines",
+										"outOfStock"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "display out-of-stock medicines",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{base_url}}/pharmacist/medicines/outOfStock",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"pharmacist",
+												"medicines",
+												"outOfStock"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.12"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 29 Jun 2025 22:59:34 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"Out-of-stock medicines retrieved successfully.\",\n    \"data\": [\n        {\n            \"id\": 10,\n            \"name\": \"Out of Stock Medicine\",\n            \"barcode\": \"OUTSTOCK123\",\n            \"manufacturer\": \"EmptyMeds Inc.\",\n            \"active_ingredient\": \"NoneLeft\",\n            \"price\": \"5.50\",\n            \"quantity\": 0,\n            \"production_date\": \"2024-12-29\",\n            \"expiry_date\": \"2026-06-29\",\n            \"img_url\": \"http://127.0.0.1:8000/images/default_medicine.jpg\",\n            \"category_name\": \"Pain Relief\"\n        }\n    ]\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Category",
+					"item": [
+						{
+							"name": "display all the categroies",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "1|r70p2FpJfCtQ3nNNpbsrxiioadWX36OQDaoz6Dpwcc42abe1",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/pharmacist/categories",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"pharmacist",
+										"categories"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "display all the categroies",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{base_url}}/pharmacist/categories",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"pharmacist",
+												"categories"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.12"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 22 Jun 2025 20:34:40 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"data\": [\n        {\n            \"id\": 2,\n            \"name\": \"Pain Relief\",\n            \"img_url\": \"http://127.0.0.1:8000/images/default_category.png\"\n        },\n        {\n            \"id\": 3,\n            \"name\": \"Antibiotics\",\n            \"img_url\": \"http://127.0.0.1:8000/images/default_category.png\"\n        },\n        {\n            \"id\": 4,\n            \"name\": \"Vitamins\",\n            \"img_url\": \"http://127.0.0.1:8000/images/default_category.png\"\n        },\n        {\n            \"id\": 5,\n            \"name\": \"Allergy\",\n            \"img_url\": \"http://127.0.0.1:8000/images/default_category.png\"\n        }\n    ]\n}"
+								}
+							]
+						},
+						{
+							"name": "store a category",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "2|m3Zlzn0BnJpdKDOZgz4U0igF8DUuH4r0XaHVgcCQ5233eede",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\":\"Eye Care\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/pharmacist/categories",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"pharmacist",
+										"categories"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "store a category",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"name\":\"Eye Care\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/pharmacist/categories",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"pharmacist",
+												"categories"
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.12"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 22 Jun 2025 20:37:21 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"data\": {\n        \"id\": 6,\n        \"name\": \"Eye Care\",\n        \"img_url\": \"http://127.0.0.1:8000/images/categories/default_category.png\"\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "update a category",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "1|OBDdeAGOClh6rxRlHvyhMgdQPUf8M4dHoAGVAnVn01229a05",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\":\"Antibiotics-1\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/pharmacist/categories/2",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"pharmacist",
+										"categories",
+										"2"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "update a category",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"name\":\"Antibiotics-3\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/pharmacist/categories/3",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"pharmacist",
+												"categories",
+												"3"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.12"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 22 Jun 2025 20:37:53 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"data\": {\n        \"id\": 3,\n        \"name\": \"Antibiotics-3\",\n        \"img_url\": \"http://127.0.0.1:8000/images/default_category.png\"\n    }\n}"
+								}
+							]
+						},
+						{
+							"name": "delete a category",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "1|OBDdeAGOClh6rxRlHvyhMgdQPUf8M4dHoAGVAnVn01229a05",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/pharmacist/categories/3",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"pharmacist",
+										"categories",
+										"3"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "delete a category",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{base_url}}/pharmacist/categories/3",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"pharmacist",
+												"categories",
+												"3"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.12"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 22 Jun 2025 20:38:33 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"Category deleted and medicines reassigned\"\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Sales",
+					"item": [
+						{
+							"name": "store a sale",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "1|xk99TmxCtyC88E18IxFuzz1gDsY3H0SZfX5JrSu2ae157e7e",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"items\":[\r\n        {\r\n            \"name\":\"Paracetamol\",\r\n            \"quantity\":3\r\n        },\r\n        {\r\n             \"name\":\"Vitamin C\",\r\n            \"quantity\":3\r\n        }\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/pharmacist/sales",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"pharmacist",
+										"sales"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "store a sale",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"items\":[\r\n        {\r\n            \"name\":\"Paracetamol\",\r\n            \"quantity\":3\r\n        },\r\n        {\r\n             \"name\":\"Vitamin C\",\r\n            \"quantity\":3\r\n        }\r\n    ]\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/pharmacist/sales",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"pharmacist",
+												"sales"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.12"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 25 Jun 2025 20:49:41 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"Sale recorded successfully.\",\n    \"invoice_number\": \"INV-00003\",\n    \"total_price\": 11.1\n}"
+								}
+							]
+						},
+						{
+							"name": "display all the sales",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "7|miDBktE0C5xkdPp05qgxkQPDAgNSVywgyvTjnsQH2eed5e25",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/pharmacist/sales",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"pharmacist",
+										"sales"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "display all the sales",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{base_url}}/pharmacist/sales",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"pharmacist",
+												"sales"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.12"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 10 Jul 2025 12:05:36 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"data\": [\n        {\n            \"id\": 1,\n            \"pharmacist_name\": \"Pharmacist User\",\n            \"invoice_number\": \"INV-00001\",\n            \"invoice_date\": \"2025-07-10 12:05:06\",\n            \"total_price\": \"11.10\"\n        },\n        {\n            \"id\": 2,\n            \"pharmacist_name\": \"Pharmacist User\",\n            \"invoice_number\": \"INV-00002\",\n            \"invoice_date\": \"2025-07-10 12:05:14\",\n            \"total_price\": \"7.50\"\n        },\n        {\n            \"id\": 3,\n            \"pharmacist_name\": \"Pharmacist User\",\n            \"invoice_number\": \"INV-00003\",\n            \"invoice_date\": \"2025-07-10 12:05:31\",\n            \"total_price\": \"3.60\"\n        }\n    ]\n}"
+								}
+							]
+						},
+						{
+							"name": "show a sale (details(the medicines and their quantities in this sale))",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "7|miDBktE0C5xkdPp05qgxkQPDAgNSVywgyvTjnsQH2eed5e25",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/pharmacist/sales/1",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"pharmacist",
+										"sales",
+										"1"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "show a sale (details(the medicines and their quantities in this sale))",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{base_url}}/pharmacist/sales/1",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"pharmacist",
+												"sales",
+												"1"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.12"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 10 Jul 2025 13:12:39 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"data\": [\n        {\n            \"id\": 1,\n            \"medicine_name\": \"Paracetamol\",\n            \"quantity\": 3,\n            \"unit_price\": \"2.50\",\n            \"subtotal\": 7.5\n        },\n        {\n            \"id\": 2,\n            \"medicine_name\": \"Vitamin C\",\n            \"quantity\": 3,\n            \"unit_price\": \"1.20\",\n            \"subtotal\": 3.5999999999999996\n        }\n    ]\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Profile",
+					"item": [
+						{
+							"name": "show the profile",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "2|qYYZoDGWx3oKsUrrFwhY4YZe06AgHW8O4CpSyHsn45a66be0",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/pharmacist/profile",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"pharmacist",
+										"profile"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "show the profile",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{base_url}}/pharmacist/profile",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"pharmacist",
+												"profile"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.12"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 26 Jun 2025 14:20:09 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"id\": 2,\n    \"name\": \"PH-1\",\n    \"email\": \"pharmacist@example.com\"\n}"
+								}
+							]
+						},
+						{
+							"name": "update the profile",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "2|qYYZoDGWx3oKsUrrFwhY4YZe06AgHW8O4CpSyHsn45a66be0",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"PH-1\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/pharmacist/profile",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"pharmacist",
+										"profile"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "update the profile",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n   \"password\":\"password123\",\r\n   \"password_confirmation\":\"password123\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/pharmacist/profile",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"pharmacist",
+												"profile"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.12"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 26 Jun 2025 14:20:53 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"id\": 2,\n    \"name\": \"PH-1\",\n    \"email\": \"pharmacist@example.com\"\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Logout",
+					"item": [
+						{
+							"name": "logout",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "2|uDAeB1VgWHl8AYtVLD4suW28FefB67xhxMTA4wVm2b6a09aa",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/pharmacist/logout",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"pharmacist",
+										"logout"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "logout",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Accept",
+												"value": "application/json",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{base_url}}/pharmacist/logout",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"pharmacist",
+												"logout"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Host",
+											"value": "127.0.0.1:8000"
+										},
+										{
+											"key": "Connection",
+											"value": "close"
+										},
+										{
+											"key": "X-Powered-By",
+											"value": "PHP/8.2.12"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, private"
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 22 Jun 2025 20:49:38 GMT"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Access-Control-Allow-Origin",
+											"value": "*"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"message\": \"LogOut Successfully\"\n}"
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Login",
+			"item": [
+				{
+					"name": "login",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "2|JL8nBSd4LH1gOWa81x62JMmbTqfzdZBWg5HpMxKE3dfcd73a",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"pharmacist@example.com\",\r\n    \"password\":\"password\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/login",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "login",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\":\"pharmacist@example.com\",\r\n    \"password\":\"password\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/login",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Host",
+									"value": "127.0.0.1:8000"
+								},
+								{
+									"key": "Connection",
+									"value": "close"
+								},
+								{
+									"key": "X-Powered-By",
+									"value": "PHP/8.2.12"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache, private"
+								},
+								{
+									"key": "Date",
+									"value": "Sun, 22 Jun 2025 20:29:20 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"access_token\": \"2|m3Zlzn0BnJpdKDOZgz4U0igF8DUuH4r0XaHVgcCQ5233eede\",\n    \"role\": \"pharmacist\"\n}"
+						}
+					]
+				}
+			]
+		}
+	]
+}
