@@ -2,10 +2,12 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class SupplierOrder extends Model
 {
+    use HasFactory;
     protected $fillable = ['supplier_id', 'user_id', 'order_date', 'total_price'];
     
     public function supplier()

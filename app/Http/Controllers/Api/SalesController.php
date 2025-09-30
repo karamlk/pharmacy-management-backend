@@ -33,7 +33,7 @@ class SalesController extends Controller
             return response()->json([
                 'error' => 'Validation failed',
                 'details' => $validator->errors()
-            ]);
+            ], 422);
         }
 
         DB::beginTransaction();
@@ -46,11 +46,17 @@ class SalesController extends Controller
                 $medicine = Medicine::where('name', $item['name'])->first();
 
                 if (! $medicine) {
-                    throw new \Exception("Medicine '{$item['name']}' not found. Please add it to the system first.");
+                    DB::rollBack();
+                    return response()->json([
+                        'error' => "Medicine '{$item['name']}' not found. Please add it to the system first."
+                    ], 422);
                 }
 
                 if ($medicine->quantity < $item['quantity']) {
-                    throw new \Exception("Insufficient quantity for medicine '{$item['name']}'. Available: {$medicine->quantity}");
+                    DB::rollBack();
+                    return response()->json([
+                        'error' => "Insufficient quantity for medicine '{$item['name']}'. Available: {$medicine->quantity}"
+                    ], 422);
                 }
 
                 $quantity = $item['quantity'];
@@ -88,7 +94,7 @@ class SalesController extends Controller
                 'message' => 'Sale recorded successfully.',
                 'invoice_number' => $sale->invoice_number,
                 'total_price' => $sale->total_price
-            ]);
+            ], 201);
         } catch (\Exception $e) {
             DB::rollBack();
             return response()->json([
