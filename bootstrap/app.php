@@ -19,6 +19,15 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->alias([
             'role' => RoleMiddleware::class,
         ]);
+
+        $middleware->appendToGroup('web', [
+            VerifyCsrfToken::class,
+        ]);
+
+        $middleware->appendToGroup('api', [
+            HandleCors::class,
+            SubstituteBindings::class,
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //
