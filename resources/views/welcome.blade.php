@@ -4,6 +4,6 @@
     <title>App Deployed</title>
 </head>
 <body>
-<h1>Laravel is running!</h1>
+<h1>Laravel is running.!</h1>
 </body>
 </html>
