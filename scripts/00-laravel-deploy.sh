@@ -12,3 +12,11 @@ php artisan route:cache
 
 echo "Publishing cloudinary provider..."
 php artisan vendor:publish --provider="CloudinaryLabs\CloudinaryLaravel\CloudinaryServiceProvider" --tag="cloudinary-laravel-config"
+
+echo "Running migrations..."
+php artisan migrate --force
+
+echo "Seeding database..."
+php artisan db:seed --force
+
+echo "Deployment completed successfully!"
