@@ -78,7 +78,7 @@ you want to purchase from a supplier with the desired quantity.
 
 ---
 
-# 🛠️ Tech Stack  
+#  Tech Stack  
 
 - **Framework:** Laravel 11  
 - **Language:** PHP 8+  
@@ -88,7 +88,7 @@ you want to purchase from a supplier with the desired quantity.
 
 ---
 
-# ✅ Test Coverage
+#  Test Coverage
  Run the test suite
  
  ```bash
@@ -179,7 +179,23 @@ php artisan serve
 
 ---
 
-## 📝 API Documentation
+# Deployment
+
+The Pharmacy Management System is deployed on [Render](https://render.com) using a Docker container, with the MySQL database hosted on [Clever Cloud](https://www.clever-cloud.com). The application and its API are accessible for testing using the following details:
+
+- **Live URL**: [https://pharmacy-management-x6ta.onrender.com](https://pharmacy-management-x6ta.onrender.com)
+- **Demo Credentials**:
+  - **Admin**: `admin@example.com` / Password: `password`
+  - **Pharmacist**: `pharmacist@example.com` / Password: `password`
+
+## Deployment Process
+- **Docker Setup**: The application is containerized using a custom Docker image, built with Laravel dependencies and configured with environment variables for secure production use.
+- **Render Configuration**: Deployed on Render’s web service, manually triggered to pull the latest Docker image from Docker Hub and it is connected to the Clever Cloud MySQL database.
+- **CI/CD Pipeline**: A GitHub Actions workflow automates PHPUnit testing (95% code coverage) on every push or pull request to the `main` branch.
+
+---
+
+##  API Documentation
 
 All API endpoints with examples are included in the Postman collection.  
 
