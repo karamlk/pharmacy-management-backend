@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\Sales;
 use App\Models\Supplier;
+use App\Models\SupplierOrder;
 use App\Models\SupplierPayment;
 use App\Models\User;
 use App\Models\UserSessionPair;
@@ -32,26 +33,31 @@ class PerformanceAnalysisController extends Controller
             ->get()
             ->map(fn($payment) => [
                 'id' => $payment->supplier->id,
-                'name_supplier'=>$payment->supplier->name,
-                'payment_supplier'=>(float) $payment->total_paid
+                'name_supplier' => $payment->supplier->name,
+                'payment_supplier' => (float) $payment->total_paid
             ]);
 
         $total_paid_to_suppliers = (float) SupplierPayment::sum('amount');
 
         // Total cost of supplier orders for the month
-        $total_supplier_orders_cost = 0;
-        $supplier_orders_cost_by_supplier = Supplier::with(['orders.items'])
-            ->get()->map(function ($supplier) use ($startOfMonth, &$total_supplier_orders_cost) {
-                $total_cost = 0;
+        $total_supplier_orders_cost = (float) SupplierOrder::whereBetween(
+            'order_date',
+            [$startOfMonth, now()]
+        )->sum('total_price');
 
-                foreach ($supplier->orders->whereBetween('order_date', [$startOfMonth, Carbon::now()]) as $order) {
-                    $total_cost += $order->total_price;
-                }
-
-                $total_supplier_orders_cost += $total_cost;
-
-                return [$supplier->name => $total_cost];
-            });
+        //Orders cost per supplier
+        $supplier_orders_cost_by_supplier = SupplierOrder::with('supplier')
+            ->whereBetween('order_date', [$startOfMonth, now()])
+            ->get()
+            ->groupBy('supplier_id')
+            ->map(function ($orders, $supplierId) {
+                return [
+                    'supplier_id' => $supplierId,
+                    'supplier_name' => optional($orders->first()->supplier)->name,
+                    'total_cost' => (float) $orders->sum('total_price'),
+                ];
+            })
+            ->values();
 
         $suppliers_total_balance = (float) Supplier::sum('balance');
 
@@ -77,7 +83,7 @@ class PerformanceAnalysisController extends Controller
             $total_pharmacist_salaries += round($total_hours * $user->hourly_rate, 2);
 
             return [
-                'id'=>$user->id,
+                'id' => $user->id,
                 'name' => $user->name,
                 'total_hours' => $total_hours
             ];

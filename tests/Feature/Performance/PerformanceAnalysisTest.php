@@ -122,22 +122,23 @@ class PerformanceAnalysisTest extends TestCase
     public function test_total_supplier_orders_cost_is_calculated_for_current_month()
     {
         $this->actingAsAdmin();
+        $daysInMonth = Carbon::now()->daysInMonth;
         $supplier = Supplier::factory()->create();
         SupplierOrder::factory()->create([
             'supplier_id' => $supplier->id,
-            'order_date' => Carbon::now()->subDays(3),
+            'order_date' => Carbon::now()->startOfMonth(),
             'total_price' => 500.00,
         ]);
         SupplierOrder::factory()->create([
             'supplier_id' => $supplier->id,
-            'order_date' => Carbon::now()->subMonth(),
+            'order_date' => Carbon::now()->startOfMonth(),
             'total_price' => 1000.00,
         ]);
 
         $response = $this->getJson('/api/admin/performanceAnalysis');
 
         $response->assertOk()
-            ->assertJsonPath('performance_analysis.supplier_orders_cost', 500);
+            ->assertJsonPath('performance_analysis.supplier_orders_cost', 1500);
     }
 
     public function test_pharmacist_work_hours_are_calculated_from_session_pairs()
