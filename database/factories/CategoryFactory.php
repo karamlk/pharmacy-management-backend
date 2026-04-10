@@ -18,6 +18,7 @@ class CategoryFactory extends Factory
     {
         return [
          'name' => $this->faker->unique()->word(),
+         'img_url'=>null
         ];
     }
 }

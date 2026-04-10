@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Category;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
-class SearchMedicineRequest extends FormRequest
+class UpdateCategoryRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -21,14 +22,9 @@ class SearchMedicineRequest extends FormRequest
      */
     public function rules(): array
     {
+        $categoryId= $this->route('id');
         return [
-            'query' => 'nullable|string',
-            'min_price' => 'nullable|numeric|min:0',
-            'max_price' => 'nullable|numeric|min:0',
-            'expiry_from' => 'nullable|date',
-            'expiry_to' => 'nullable|date|after_or_equal:expiry_from',
-            'min_quantity' => 'nullable|integer|min:0',
-            'max_quantity' => 'nullable|integer|min:0',
+            'name' => ['required','string','max:255',Rule::unique('categories')->ignore($categoryId)]
         ];
     }
 }
