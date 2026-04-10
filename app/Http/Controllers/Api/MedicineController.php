@@ -3,15 +3,10 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\SearchMedicineRequest;
-use App\Http\Requests\StoreMedicineRequest;
-use App\Http\Requests\UpdateMedicineRequest;
+use App\Http\Requests\Medicine\SearchMedicineRequest;
+use App\Http\Requests\Medicine\StoreMedicineRequest;
+use App\Http\Requests\Medicine\UpdateMedicineRequest;
 use App\Http\Resources\MedicineResource;
-use App\Models\Category;
-use App\Models\Medicine;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Validation\Rule;
 use App\Services\Medicine\MedicineService;
 
 class MedicineController extends Controller
