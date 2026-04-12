@@ -3,119 +3,57 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Sales\StoreSaleRequest;
 use App\Http\Resources\SaleItemResource;
 use App\Http\Resources\SaleResource;
-use App\Models\Medicine;
-use App\Models\SaleItem;
-use App\Models\Sales;
-use Illuminate\Http\Request;
+use App\Services\Sales\SalesService;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\ValidationException;
 
 class SalesController extends Controller
 {
-    public function index()
+    protected $salesService;
+
+    public function __construct(SalesService $salesService)
     {
-        $sales = Sales::all();
-        return SaleResource::collection($sales);
+        $this->salesService = $salesService;
     }
 
-    public function store(Request $request)
+    public function index()
     {
-        $validator = Validator::make($request->all(), [
-            'items' => ['required', 'array', 'min:1'],
-            'items.*.name' => ['required', 'string'],
-            'items.*.quantity' => ['required', 'integer', 'min:1']
-        ]);
+        return SaleResource::collection($this->salesService->getAllSales());
+    }
 
-        if ($validator->fails()) {
-            return response()->json([
-                'error' => 'Validation failed',
-                'details' => $validator->errors()
-            ], 422);
-        }
-
-        DB::beginTransaction();
-
+    public function store(StoreSaleRequest $request)
+    {
         try {
-            $validatedItems = [];
-            $totalPrice = 0;
-
-            foreach ($request->items as $item) {
-                $medicine = Medicine::where('name', $item['name'])->first();
-
-                if (! $medicine) {
-                    DB::rollBack();
-                    return response()->json([
-                        'error' => "Medicine '{$item['name']}' not found. Please add it to the system first."
-                    ], 422);
-                }
-
-                if ($medicine->quantity < $item['quantity']) {
-                    DB::rollBack();
-                    return response()->json([
-                        'error' => "Insufficient quantity for medicine '{$item['name']}'. Available: {$medicine->quantity}"
-                    ], 422);
-                }
-
-                $quantity = $item['quantity'];
-                $unitPrice = $medicine->price;
-                $subtotal = $quantity * $unitPrice;
-                $totalPrice += $subtotal;
-
-                $medicine->quantity -= $quantity;
-                $medicine->save();
-
-                $validatedItems[] = [
-                    'medicine_id' => $medicine->id,
-                    'quantity' => $quantity,
-                    'unit_price' => $unitPrice
-                ];
-            }
-
-            $user = Auth::user();
-
-            $sale = Sales::create([
-                'user_id' => $user->id,
-                'invoice_number' => 'INV-' . str_pad(Sales::count() + 1, 5, '0', STR_PAD_LEFT),
-                'invoice_date' => now(),
-                'total_price' => $totalPrice
-            ]);
-
-            foreach ($validatedItems as $item) {
-                $item['sale_id'] = $sale->id;
-                SaleItem::create($item);
-            }
-
-            DB::commit();
+            $result = $this->salesService->createSale(
+                $request->validated()['items'],
+                Auth::user()
+            );
 
             return response()->json([
                 'message' => 'Sale recorded successfully.',
-                'invoice_number' => $sale->invoice_number,
-                'total_price' => $sale->total_price
+                'invoice_number' => $result['invoice_number'],
+                'total_price' => $result['total_price']
             ], 201);
-        } catch (\Exception $e) {
-            DB::rollBack();
+        } catch (ValidationException $e) {
             return response()->json([
-                'error' => 'Transaction failed',
-                'details' => $e->getMessage()
+                'error' => 'Validation failed',
+                'details' => $e->errors()
             ], 422);
         }
     }
 
     public function show($sale_id)
     {
-        $sale = Sales::with([
-            'user' => fn($q) => $q->withTrashed(),
-            'items.medicine' => fn($q) => $q->withTrashed()
-        ])->find($sale_id);
+        $items = $this->salesService->getSaleItems($sale_id);
 
-        if (!$sale) {
+        if (!$items) {
             return response()->json(["message" => "Sale not found."], 404);
         }
 
-        return SaleItemResource::collection($sale->items);
+        return SaleItemResource::collection($items);
     }
 
     // public function destroy($sale_id)

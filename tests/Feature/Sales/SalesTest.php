@@ -68,7 +68,8 @@ class SalesTest extends TestCase
         ]);
 
         $response->assertStatus(422)
-            ->assertJsonStructure(['error', 'details']);
+            ->assertJsonStructure(['message', 'errors'])
+            -> assertJsonValidationErrors(['items.0.name']);
 
         $this->assertDatabaseCount('sales', 0);
     }
