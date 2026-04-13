@@ -73,7 +73,9 @@ class SupplierPaymentTest extends TestCase
         $response = $this->postJson("/api/admin/suppliers/{$supplier->id}/payments", ['amount' => 200.00]);
 
         $response->assertStatus(422)
-            ->assertJson(['error' => 'Payment amount exceeds supplier balance.']);
+            ->assertJsonValidationErrors([
+                'amount' => 'Payment amount exceeds supplier balance.'
+            ]);
 
         $this->assertDatabaseHas('suppliers', [
             'id' => $supplier->id,
@@ -97,7 +99,7 @@ class SupplierPaymentTest extends TestCase
             ->assertJsonCount(10, 'data')
             ->assertJsonStructure([
                 'data' => [
-                    '*' => [  
+                    '*' => [
                         'id',
                         'supplier_name',
                         'processed_by',
