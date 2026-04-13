@@ -3,64 +3,46 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Supplier\StoreSupplierPaymentRequest;
 use App\Http\Resources\SupplierPaymentResource;
 use App\Models\Supplier;
-use App\Models\SupplierPayment;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use App\Services\Supplier\SupplierPaymentService;
 
 class SupplierPaymentController extends Controller
 {
+    protected $service;
+
+    public function __construct(SupplierPaymentService $service)
+    {
+        $this->service = $service;
+    }
+
     public function index()
     {
-       $supplierPayments = SupplierPayment::all();
-        return SupplierPaymentResource::collection($supplierPayments);
+        $payments = $this->service->getAllPayments();
+        return SupplierPaymentResource::collection($payments);
     }
 
-        public function show($supplier_id)
+    public function show($id)
     {
-        $supplier = Supplier::find($supplier_id);
+        $supplier = Supplier::findOrFail($id);
 
-        if (!$supplier) {
-            return response()->json(['error' => 'Supplier not found'], 404);
-        }
+        $payments = $this->service->getPaymentsBySupplier($supplier);
 
-        $supplier_payments = $supplier->payments;
-        
-        return SupplierPaymentResource::collection($supplier_payments);
+        return SupplierPaymentResource::collection($payments);
     }
 
-
-    public function store(Request $request, $supplier_id)
+    public function store(StoreSupplierPaymentRequest $request, $id)
     {
-        $user = Auth::user();
+        $supplier = Supplier::findOrFail($id);
 
-        $validatedData = $request->validate([
-            'amount' => 'required|numeric|min:0.01',
-        ]);
+        $this->service->createPayment(
+            $supplier,
+            $request->amount
+        );
 
-         $supplier = Supplier::find($supplier_id);
-
-        if (!$supplier) {
-            return response()->json(['error' => 'Supplier not found'], 404);
-        }
-
-        if ($validatedData['amount'] > $supplier->balance) {
         return response()->json([
-            'error' => 'Payment amount exceeds supplier balance.'
-        ], 422);
+            'message' => 'Supplier payment created successfully.'
+        ], 201);
     }
-
-        SupplierPayment::create([
-            'supplier_id' => $supplier_id,
-            'user_id' => $user->id,
-            'amount' => $validatedData['amount'],
-            'payment_date' => now(),
-        ]);
-
-        $supplier->decrement('balance', $validatedData['amount']);
-
-        return response()->json(['message' => 'Supplier payment created successfully.'], 201);
-    }
-
 }
