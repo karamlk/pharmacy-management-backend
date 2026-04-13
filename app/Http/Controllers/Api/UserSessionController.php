@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\UserSessionPair;
-use Illuminate\Http\Request;
 
 class UserSessionController extends Controller
 {
@@ -12,13 +11,20 @@ class UserSessionController extends Controller
     {
         $pharmacistSessions = UserSessionPair::with(['login', 'logout', 'user'])
             ->whereHas('user.roles', function ($query) {
-                $query->where('name','pharmacist');
+                $query->where('name', 'pharmacist');
             })
             ->orderBy('id', 'desc')
             ->get()
             ->groupBy('user_id');
 
-        $result = $pharmacistSessions->map(function ($sessions) {
+        $result = $this->formatSessions($pharmacistSessions);
+
+        return response()->json($result);
+    }
+
+    private function formatSessions($sessions)
+    {
+        return $sessions->map(function ($sessions) {
             $user = $sessions->first()->user;
 
             return [
@@ -30,9 +36,6 @@ class UserSessionController extends Controller
                     ];
                 })->values()
             ];
-            
         })->values();
-
-        return response()->json($result);
     }
 }
