@@ -53,10 +53,7 @@ class SupplierOrderController extends Controller
 
     public function ordersBySupplier($supplierId)
     {
-        $orders = SupplierOrder::with([
-            'user' => fn($q) => $q->withTrashed(),
-            'supplier' => fn($q) => $q->withTrashed()
-        ])->where('supplier_id', $supplierId)->latest()->get();
+        $orders = $this->service->getAllOrdersBySupplier($supplierId);
 
         return SupplierOrderResource::collection($orders);
     }
