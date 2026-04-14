@@ -19,6 +19,70 @@ A **Laravel-based RESTful API** for managing a pharmacy’s operations, includin
 
 ---
 
+# Architecture & Code Quality Improvements
+
+This project was refactored to follow clean architecture principles and improve maintainability as it scales.
+
+## Service Layer Pattern
+- Introduced a dedicated **Service Layer** for all modules (Users, Suppliers, Orders, Payments, Sales, etc.)
+- Controllers are now thin and only handle HTTP requests/responses
+- All business logic is encapsulated in service classes
+
+---
+
+## Form Request Validation
+- Moved validation logic into **Form Request classes**
+- Ensures clean controllers and reusable validation rules
+- Provides consistent validation error responses
+
+---
+
+## Exception-Based Error Handling
+- Replaced manual error handling with **custom exceptions**
+- Examples:
+  - `PharmacistNotFoundException`
+  - `NotPharmacistException`
+- Ensures consistent API error responses
+
+---
+
+## API Resource Standardization
+- Used **Laravel API Resources** to format responses
+- Ensures consistent structure across all endpoints
+- Separates data representation from business logic
+
+---
+
+## Modular Structure
+Each module follows a consistent structure:
+
+- Controller  
+- Service  
+- Form Requests  
+- Resources  
+- Tests  
+
+---
+
+## Test-Driven Improvements
+- Feature tests were written and used to guide refactoring
+- Covered:
+  - Valid scenarios
+  - Validation failures
+  - Edge cases (e.g., non-existent resources)
+- Ensured stability while introducing architectural changes
+
+---
+
+## Business Logic Encapsulation
+Critical operations are handled inside services:
+
+- Supplier balance updates after orders/payments  
+- Inventory updates when purchasing medicines  
+- Salary calculation based on working hours  
+- Payment validation against supplier balance  
+
+---
 
 # Usage
 
@@ -102,18 +166,20 @@ you want to purchase from a supplier with the desired quantity.
   - Update info
   - Change password
 
-- **Users**
+- **User**
   - Create, Read, Update, Delete (CRUD)
 
-- **Suppliers**
+- **Supplier**
   - CRUD operations
   - Orders
   - Payments
 
-- **Medicines**
+- **Medicine**
   - CRUD operations
   - Filters: expired, out of stock, search
 
+- **Category**
+  - CRUD operations
 
 - **Sales**
   - Invoice creation
