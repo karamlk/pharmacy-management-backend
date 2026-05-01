@@ -1,8 +1,21 @@
 #  Pharmacy Management System – Backend API  
 
-A **Laravel-based RESTful API** for managing a pharmacy’s operations, including medicines, suppliers, pharmacists work hours, salaries, and inventory.  
+<p align="center">
+  <b>Production-ready REST API for pharmacy operations with 85% test coverage and automated CI/CD</b>
+</p>
 
----
+<p align="center">
+  <img src="https://img.shields.io/badge/Laravel-11-red?style=for-the-badge&logo=laravel">
+  <img src="https://img.shields.io/badge/PHP-8%2B-blue?style=for-the-badge&logo=php">
+  <img src="https://img.shields.io/badge/MySQL-Database-orange?style=for-the-badge&logo=mysql">
+  <img src="https://img.shields.io/badge/Docker-Containerized-blue?style=for-the-badge&logo=docker">
+  <img src="https://img.shields.io/badge/Auth-Sanctum-green?style=for-the-badge">
+  <img src="https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge">
+</p>
+
+<p align="center">
+  <img src="https://github.com/karamlk/pharmacy-management-backend/actions/workflows/laravel-ci.yml/badge.svg">
+</p>
 
 # Features
 
