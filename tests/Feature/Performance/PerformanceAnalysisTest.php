@@ -176,25 +176,42 @@ class PerformanceAnalysisTest extends TestCase
 
     public function test_profit_estimate_is_sales_minus_costs_and_salaries()
     {
+        Carbon::setTestNow(Carbon::create(2025, 4, 15)); // freeze to a fixed date
+
         $this->actingAsAdmin();
+
         Sales::factory()->create([
             'invoice_date' => Carbon::now(),
             'total_price' => 1000,
         ]);
+
         $supplier = Supplier::factory()->create();
         SupplierOrder::factory()->create([
             'supplier_id' => $supplier->id,
             'order_date' => Carbon::now(),
             'total_price' => 300,
         ]);
+
         $pharmacist = User::factory()->create(['hourly_rate' => 20]);
-        $login = UserSession::factory()->create(['user_id' => $pharmacist->id, 'occurred_at' => Carbon::now()->subHours(11)]);
-        $logout = UserSession::factory()->create(['user_id' => $pharmacist->id, 'occurred_at' => Carbon::now()->subHours(1)]);
-        UserSessionPair::factory()->create(['user_id' => $pharmacist->id, 'login_session_id' => $login->id, 'logout_session_id' => $logout->id]);
+        $login = UserSession::factory()->create([
+            'user_id' => $pharmacist->id,
+            'occurred_at' => Carbon::now()->subHours(11),
+        ]);
+        $logout = UserSession::factory()->create([
+            'user_id' => $pharmacist->id,
+            'occurred_at' => Carbon::now()->subHours(1),
+        ]);
+        UserSessionPair::factory()->create([
+            'user_id' => $pharmacist->id,
+            'login_session_id' => $login->id,
+            'logout_session_id' => $logout->id,
+        ]);
 
         $response = $this->getJson('/api/admin/performanceAnalysis');
 
         $response->assertOk()
             ->assertJsonPath('performance_analysis.profit_estimate', 500);
+
+        Carbon::setTestNow(); // clear the frozen time after the test
     }
 }
